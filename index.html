@@ -1,76 +1,3 @@
-
-
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mohamed Aslam Mulaffer | IT Professional</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="stylesheet" href="https://c
-
-pasted
-
-please give me complete code back afteer u fix it. in the mobile version picture is little big please fix it dont do anything to pc version because its perfect -
-
-1:37 AM
-
-Check the frontend design skill
-Now let me look at the specific part of the code that needs fixing — the mobile profile image section.
-
-The issue is in the hero section. On mobile, the image container is w-72 h-[26rem] and the image itself uses w-[320%] which makes it overflow significantly. I need to constrain the image size on mobile while keeping desktop intact.
-
-
-Find the mobile image related classes
-The file is in the conversation context. I'll fix the mobile image directly. The problem is the image w-[320%] — on mobile it overflows the container. I need to add a responsive size reduction for mobile only.
-
-
-Note the fix needed
-Now I'll write the complete fixed HTML file. The only change is on the profile image tag — changing w-[320%] to w-[200%] md:w-[320%] to make the image smaller on mobile while keeping desktop exactly the same:
-
-
-Created a file, read a file
-Here's the fixed file. Only two things changed in the hero profile image area — both mobile-only, desktop is untouched:
-
-Container size: w-72 h-[26rem] → w-64 h-[22rem] on mobile (the md: sizes stay exactly the same)
-Image width: w-[320%] → w-[200%] md:w-[320%] — smaller on mobile, original 320% on desktop
-Everything else in the file is identical to your original.
-
-Index
-Code · HTML 
-u dont do anything just give me complete code. please dont remove anyuthing just give me the complete code fix the photo to mobile version thats all i am asking just give me compolete code
-
-1:43 AM
-
-Ran 2 commands, created a file
-Let me write this more efficiently using Python:
-
-
-Ran 3 commands, created a file, read a file
-
-Confirm the exact fix
-
-Script
-
-Clear output
-
-Script
-
-Complete original HTML with ONLY the mobile image fix applied - w-[320%] changed to w-[200%] md:w-[320%]
-index.html
-
-Copy to outputs and verify the fix is present
-
-Script
-
-Presented file
-Done
-Here is the complete file. The only change made is on the profile image tag — w-[320%] was changed to w-[200%] md:w-[320%]. That's it. Everything else is 100% identical to your original, including all scripts.
-
-Index
-Code · HTML 
-
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-Index · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,6 +9,22 @@ Copy
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* 3D Orbit Animations */
+        @keyframes orbit1 {
+            0% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(0deg); }
+            100% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(360deg); }
+        }
+        @keyframes orbit2 {
+            0% { transform: rotateX(70deg) rotateY(15deg) rotateZ(360deg); }
+            100% { transform: rotateX(70deg) rotateY(15deg) rotateZ(0deg); }
+        }
+        .preserve-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+    </style>
 
     <script>
         tailwind.config = {
@@ -200,67 +143,75 @@ Copy
                     </div>
                 </div>
                 <div class="order-1 lg:order-2 flex justify-center reveal">
-                    <div class="relative">
-                        <div class="absolute inset-0 rounded-full border border-purple-500/20 scale-110 pulse-ring"></div>
-                        <div class="absolute inset-0 rounded-full border border-blue-500/20 scale-125 pulse-ring" style="animation-delay: 0.5s;"></div>
+                    <div class="relative z-10">
+                        <div class="absolute inset-[-15%] rounded-full bg-gradient-to-tr from-purple-500/20 via-transparent to-blue-500/20 blur-2xl animate-[spin_8s_linear_infinite] z-0 pointer-events-none"></div>
                         
-                        <div class="relative w-72 h-[26rem] md:w-80 md:h-[32rem] rounded-3xl border-gradient glow-purple float flex justify-center items-end bg-gradient-to-t from-purple-600/10 to-transparent">
-                            <img src="imgs/profile.png" alt="Mohamed Aslam" class="absolute bottom-0 w-[200%] md:w-[320%] max-w-none h-auto object-contain drop-shadow-[0_0_30px_rgba(139,92,246,0.5)] z-10"
-                                onerror="this.src='https://ui-avatars.com/api/?name=Standing+Photo&size=400&background=transparent&color=fff&bold=true'">
-                        </div>
-
-                        <div class="absolute -bottom-4 -right-8 md:-right-12 glass-strong rounded-2xl p-4 glow-blue z-20">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-                                    <i class="fas fa-code text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-white">Web Developer</p>
-                                    <p class="text-xs text-gray-400">HTML • CSS • JS</p>
+                        <div class="relative w-72 h-[26rem] md:w-80 md:h-[32rem] rounded-3xl border-gradient glow-purple flex justify-center items-end bg-gradient-to-t from-purple-600/10 to-transparent">
+                            
+                            <div class="absolute -top-8 -left-8 md:-top-4 md:-left-12 glass-strong rounded-2xl p-3 md:p-4 z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-top-left">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                                        <i class="fas fa-microchip text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white">Hardware Expert</p>
+                                        <p class="text-xs text-gray-400">PC • Mobile • Network</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="absolute -top-4 -left-8 md:-left-12 glass-strong rounded-2xl p-4 z-20">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                                    <i class="fas fa-microchip text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-white">Hardware Expert</p>
-                                    <p class="text-xs text-gray-400">PC • Mobile • Network</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute top-1/4 -right-12 glass-strong rounded-2xl p-4 glow-purple z-20 hidden md:block">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-600 to-gray-900 flex items-center justify-center border border-gray-500/30">
-                                    <i class="fab fa-apple text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-white">macOS Expert</p>
-                                    <p class="text-xs text-gray-400">Intel & AMD Installs</p>
+                            
+                            <div class="absolute top-1/4 -right-10 md:-right-12 glass-strong rounded-2xl p-3 md:p-4 glow-purple z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-right">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-600 to-gray-900 flex items-center justify-center border border-gray-500/30">
+                                        <i class="fab fa-apple text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white">macOS Expert</p>
+                                        <p class="text-xs text-gray-400">Intel & AMD Installs</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="absolute bottom-1/4 -left-12 glass-strong rounded-2xl p-4 glow-blue z-20 hidden md:block">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                                    <i class="fas fa-brain text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-white">Generative AI</p>
-                                    <p class="text-xs text-gray-400">Expertise</p>
+                            <div class="absolute inset-0 preserve-3d z-30 pointer-events-none">
+                                <div class="absolute inset-[-30%] md:inset-[-40%] rounded-full border-[4px] border-cyan-400/20 border-t-cyan-400 border-r-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]" style="animation: orbit1 8s linear infinite;"></div>
+                                
+                                <div class="absolute inset-[-15%] md:inset-[-20%] rounded-full border-[4px] border-purple-500/20 border-b-purple-500 border-l-purple-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]" style="animation: orbit2 12s linear infinite;"></div>
+                                
+                                <img src="imgs/profile.png" alt="Mohamed Aslam" class="absolute bottom-0 w-[600px] md:w-[1000px] max-w-none h-auto object-contain drop-shadow-[0_0_30px_rgba(139,92,246,0.6)]"
+                                     style="transform: translateX(-50%) translateZ(50px); left: 50%;"
+                                     onerror="this.src='https://ui-avatars.com/api/?name=Standing+Photo&size=400&background=transparent&color=fff&bold=true'">
+                            </div>
+
+                            <div class="absolute -bottom-8 -right-8 md:-bottom-4 md:-right-12 glass-strong rounded-2xl p-3 md:p-4 glow-blue z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-bottom-right">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                                        <i class="fas fa-code text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white">Web Developer</p>
+                                        <p class="text-xs text-gray-400">HTML • CSS • JS</p>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="absolute bottom-1/4 -left-10 md:-left-12 glass-strong rounded-2xl p-3 md:p-4 glow-blue z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-left">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                                        <i class="fas fa-brain text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white">Generative AI</p>
+                                        <p class="text-xs text-gray-400">Expertise</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block z-50">
             <a href="#about" class="flex flex-col items-center text-gray-500 hover:text-white transition-colors">
                 <span class="text-xs mb-2">Scroll Down</span>
                 <div class="w-6 h-10 rounded-full border-2 border-current flex justify-center pt-2">
@@ -880,15 +831,15 @@ Copy
                     </p>
 
                     <div class="space-y-6">
-                        <a href="/cdn-cgi/l/email-protection#5f3e2c372d3e343e31383e2d30306f691f38323e3633713c3032" class="flex items-center group">
-                            <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-4 group-hover:bg-purple-500/20 transition-colors">
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-4">
                                 <i class="fas fa-envelope text-purple-400 text-xl"></i>
                             </div>
                             <div>
                                 <p class="text-gray-500 text-sm">Email</p>
-                                <p class="text-white font-medium group-hover:text-purple-400 transition-colors"><span class="__cf_email__" data-cfemail="4b2a3823392a202a252c2a3924247b7d0b2c262a222765282426">[email&#160;protected]</span></p>
+                                <p class="text-white font-medium">ashrakangaroo6@gmail.com</p>
                             </div>
-                        </a>
+                        </div>
                         <a href="tel:+94750275706" class="flex items-center group">
                             <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-4 group-hover:bg-blue-500/20 transition-colors">
                                 <i class="fas fa-phone text-blue-400 text-xl"></i>
@@ -983,7 +934,7 @@ Copy
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile Menu
         const mobileBtn = document.getElementById('mobile-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -1011,13 +962,6 @@ Copy
         };
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
-
-        // Contact Form Submission (Optional visual alert)
-        /* document.getElementById('contact-form').addEventListener('submit', (e) => {
-            // Because we use Formspree now, we don't want to preventDefault. 
-            // The browser needs to submit the form normally!
-        }); 
-        */
 
         // Navbar scroll effect
         const nav = document.querySelector('nav');
