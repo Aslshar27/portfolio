@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Videos | Mohamed Aslam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0a0a0f',
+                            800: '#12121a',
+                            700: '#1a1a24',
+                            600: '#22222e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-100 overflow-x-hidden bg-dark-900">
+    
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: -3s;"></div>
+    </div>
+
+    <nav class="fixed w-full top-0 z-50 glass shadow-2xl">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold font-space flex items-center group">
+                    <i class="fas fa-arrow-left text-gray-400 group-hover:text-purple-400 mr-4 text-lg transition-colors"></i>
+                    <span class="gradient-text">ASLAM Projects</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Back to Profile</a>
+                    <a href="index.html#contact" class="magnetic-btn px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+                        Hire Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 relative z-10 noise border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal active">
+            <div class="inline-flex items-center px-4 py-2 rounded-full glass mb-6">
+                <i class="fas fa-video text-purple-400 mr-2 animate-pulse"></i>
+                <span class="text-sm text-gray-300">My Video Portfolio</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold font-space mb-6">
+                Project <span class="gradient-text">Showcase</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                Watch detailed demonstrations of my freelance web development builds, software architecture, custom Hackintosh installations, and hardware repairs.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
+                </div>
+
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-white/10 mt-10 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-sm">
+            © 2026 <span class="gradient-text font-semibold">Mohamed Aslam Mulaffer</span>. Available for Freelance Projects.
+        </div>
+    </footer>
+
+    <button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hidden hover:shadow-purple-500/25 transition-all z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 🚨 HOW TO ADD A NEW PROJECT 🚨
+        // Just copy an existing block inside the brackets { }, add a comma, 
+        // and paste it below. Change the text and the Cloudinary link!
+        
+        const myProjects = [
+            {
+                title: "Custom Web Application Build",
+                description: "Showcase of a fully responsive e-commerce web platform I developed from scratch.",
+                videoUrl: "https://your-cloudinary-url-here.com/video1.mp4",
+                tag: "Web Dev",
+                color: "purple" // Options: purple, blue, green, orange, cyan, pink
+            },
+            {
+                title: "Hackintosh: macOS on AMD Processor",
+                description: "Demonstrating a perfectly stable macOS installation on an unsupported AMD processor with fully working drivers.",
+                videoUrl: "https://res.cloudinary.com/dvrkgxr4p/video/upload/v1771267051/YTDown.com_YouTube_Dual-Boot-Official-macOS-Sequoia-_-Windo_Media_A6grUsOaJso_001_1080p_cumpuo.mp4",
+                color: "blue"
+            },
+            {
+                title: "Python Software Automation Script",
+                description: "A Python script in action that automates repetitive daily business tasks, saving hours of manual labor.",
+                videoUrl: "https://your-cloudinary-url-here.com/video3.mp4",
+                tag: "Python Dev",
+                color: "green"
+            },
+            {
+                title: "High-End Laptop Motherboard Repair",
+                description: "Complete teardown, hardware diagnostic, and component-level repair of a gaming laptop.",
+                videoUrl: "https://your-cloudinary-url-here.com/video4.mp4",
+                tag: "Hardware",
+                color: "orange"
+            }
+            // Add your new projects right here! Don't forget the comma on the previous one.
+        ];
+
+        // ==========================================
+        // DO NOT TOUCH THE CODE BELOW THIS LINE
+        // This script automatically builds your webpage based on the data above.
+        // ==========================================
+
+        const gridContainer = document.getElementById('project-grid');
+
+        // Color mapping for the tags
+        const colorStyles = {
+            purple: "bg-purple-500/20 text-purple-300",
+            blue: "bg-blue-500/20 text-blue-300",
+            green: "bg-green-500/20 text-green-300",
+            orange: "bg-orange-500/20 text-orange-300",
+            cyan: "bg-cyan-500/20 text-cyan-300",
+            pink: "bg-pink-500/20 text-pink-300"
+        };
+
+        // Generate HTML for each project
+        myProjects.forEach((project, index) => {
+            const badgeClass = colorStyles[project.color] || colorStyles.purple; // Default to purple if misspelled
+            
+            const cardHTML = `
+                <div class="premium-card glass rounded-3xl p-6 reveal active" style="animation-delay: ${index * 0.1}s;">
+                    <div class="w-full aspect-video rounded-xl overflow-hidden bg-dark-800 mb-6 border border-white/10 relative">
+                        <video controls class="w-full h-full object-cover">
+                            <source src="${project.videoUrl}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-white">${project.title}</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">${project.description}</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${badgeClass}">
+                            ${project.tag}
+                        </span>
+                    </div>
+                </div>
+            `;
+            
+            gridContainer.innerHTML += cardHTML;
+        });
+
+        // Back to Top functionality
+        const backTop = document.getElementById('back-top');
+        window.addEventListener('scroll', () => {
+            backTop.classList.toggle('hidden', window.scrollY <= 300);
+        });
+        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>
