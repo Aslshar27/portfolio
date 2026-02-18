@@ -7,8 +7,225 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+        body {
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: radial-gradient(circle at top, #111827 0, #020617 45%, #020617 100%);
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+        }
+        .glass-strong {
+            background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.16), rgba(15, 23, 42, 0.95));
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(148, 163, 184, 0.24);
+        }
+        .premium-card {
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            box-shadow:
+                0 18px 45px rgba(15, 23, 42, 0.85),
+                0 0 0 1px rgba(148, 163, 184, 0.12);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.18), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%),
+                        #020617;
+        }
+        .gradient-text {
+            background: linear-gradient(120deg, #a855f7, #6366f1, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-text-warm {
+            background: linear-gradient(120deg, #f97316, #ec4899, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .text-glow {
+            text-shadow: 0 0 25px rgba(129, 140, 248, 0.55);
+        }
+
+        .border-gradient {
+            position: relative;
+        }
+        .border-gradient::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.8), rgba(56, 189, 248, 0.9));
+            -webkit-mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .glow-purple {
+            box-shadow:
+                0 0 25px rgba(168, 85, 247, 0.55),
+                0 0 40px rgba(79, 70, 229, 0.35);
+        }
+        .glow-blue {
+            box-shadow:
+                0 0 25px rgba(56, 189, 248, 0.55),
+                0 0 40px rgba(59, 130, 246, 0.35);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -16px, 0); }
+        }
+        .float {
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .skill-progress {
+            background-image: linear-gradient(90deg, #8b5cf6, #3b82f6, #22d3ee);
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, rgba(148, 163, 184, 0.15), rgba(129, 140, 248, 0.7));
+        }
+        .timeline-dot {
+            background: radial-gradient(circle, #a855f7, #22d3ee);
+            box-shadow: 0 0 15px rgba(94, 234, 212, 0.7);
+        }
+
+        .noise::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.07;
+            mix-blend-mode: soft-light;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            z-index: 0;
+        }
+
+        nav.glass {
+            background: rgba(15, 23, 42, 0.82);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+        }
+
+        .ml-18 { margin-left: 4.5rem; }
+
+        /* === MOBILE OPTIMIZATIONS (keep design, improve fit) === */
+        @media (max-width: 640px) {
+            body {
+                font-size: 0.9rem;
+            }
+            nav .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            #home {
+                padding-top: 5rem;
+            }
+            #home .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 3.5rem;
+                padding-bottom: 3.5rem;
+            }
+            h1 {
+                font-size: clamp(2rem, 7vw, 2.6rem) !important;
+                line-height: 1.15 !important;
+            }
+            #home p {
+                font-size: 0.95rem;
+            }
+            section {
+                padding-top: 3.5rem !important;
+                padding-bottom: 3.5rem !important;
+            }
+            #about .grid,
+            #skills .grid,
+            #contact .grid,
+            #experience .max-w-4xl,
+            #education .max-w-4xl {
+                gap: 1.75rem !important;
+            }
+            .ml-18 {
+                margin-left: 2.75rem;
+            }
+
+            /* Hero avatar/card scaling */
+            .hero-avatar-shell,
+            #home .border-gradient {
+                width: 13.5rem !important;
+                height: 22rem !important;
+            }
+            #home img[alt="Mohamed Aslam"] {
+                width: 460px !important;
+            }
+            #home .preserve-3d > div[style*="orbit1"],
+            #home .preserve-3d > div[style*="orbit2"] {
+                inset: -22% !important;
+            }
+
+            /* Badges around hero image slightly smaller */
+            #home .glass-strong {
+                transform: scale(0.82);
+            }
+
+            /* Stats tighter */
+            #home .grid.grid-cols-3 {
+                gap: 1.25rem;
+            }
+
+            /* About image box */
+            #about img {
+                max-height: 260px;
+                object-fit: cover;
+            }
+
+            .premium-card {
+                box-shadow:
+                    0 14px 35px rgba(15, 23, 42, 0.95),
+                    0 0 0 1px rgba(148, 163, 184, 0.18);
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            #home .max-w-7xl {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            .hero-avatar-shell,
+            #home .border-gradient {
+                width: 17rem !important;
+                height: 27rem !important;
+            }
+            #home img[alt="Mohamed Aslam"] {
+                width: 720px !important;
+            }
+        }
+    </style>
 
     <style>
         /* 3D Orbit Animations */
@@ -54,35 +271,35 @@
     </script>
 </head>
 <body class="text-gray-100 overflow-x-hidden">
-    <div class="fixed inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: -3s;"></div>
-        <div class="absolute top-3/4 left-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl float" style="animation-delay: -1.5s;"></div>
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-purple-500/10 rounded-full blur-3xl float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: -3s;"></div>
+        <div class="absolute top-3/4 left-1/2 -translate-x-1/2 w-56 sm:w-64 h-56 sm:h-64 bg-cyan-500/10 rounded-full blur-3xl float" style="animation-delay: -1.5s;"></div>
     </div>
 
     <nav class="fixed w-full top-0 z-50 glass">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
             <div class="flex justify-between items-center">
-                <a href="#home" class="text-2xl font-bold font-space">
+                <a href="#home" class="text-xl sm:text-2xl font-bold" style="font-family:'Space Grotesk',system-ui">
                     <span class="gradient-text">ASLAM</span>
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Home</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">About</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Skills</a>
-                    <a href="#experience" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Experience</a>
-                    <a href="#education" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Education</a>
-                    <a href="projects.html" class="nav-link text-purple-400 hover:text-purple-300 transition-colors text-sm font-bold">Project Videos</a>
-                    <a href="#contact" class="magnetic-btn px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+                <div class="hidden md:flex items-center space-x-7 text-sm">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors font-medium">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors font-medium">Skills</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-white transition-colors font-medium">Experience</a>
+                    <a href="#education" class="nav-link text-gray-300 hover:text-white transition-colors font-medium">Education</a>
+                    <a href="projects.html" class="nav-link text-purple-400 hover:text-purple-300 transition-colors font-semibold">Project Videos</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
                         Contact Me
                     </a>
                 </div>
-                <button id="mobile-btn" class="md:hidden text-white text-xl">
+                <button id="mobile-btn" class="md:hidden text-white text-2xl leading-none">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-white/10 pt-6">
-                <div class="flex flex-col space-y-4">
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col space-y-3 text-sm">
                     <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
                     <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
                     <a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
@@ -95,125 +312,120 @@
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen hero-gradient relative flex items-center pt-20 noise">
-        <div class="max-w-7xl mx-auto px-6 py-20">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <!-- HERO -->
+    <section id="home" class="min-h-screen hero-gradient relative flex items-center pt-24 sm:pt-28 noise">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+            <div class="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
                 <div class="order-2 lg:order-1 reveal">
-                    <div class="inline-flex items-center px-4 py-2 rounded-full glass mb-6">
+                    <div class="inline-flex items-center px-3 sm:px-4 py-2 rounded-full glass mb-5 sm:mb-6 text-xs sm:text-sm">
                         <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                        <span class="text-sm text-gray-400">Available for Freelance Projects</span>
+                        <span class="text-gray-300">Available for Freelance Projects</span>
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-bold font-space leading-tight mb-6">
-                        Hi, I'm<br>
-                        <span class="gradient-text text-glow">Mohamed Aslam</span>
+                    <h1 class="font-bold mb-4 sm:mb-5" style="font-family:'Space Grotesk',system-ui; font-size:clamp(2rem,4.5vw,3.5rem); line-height:1.1;">
+                        Hi, I'm<br />
+                        <span class="gradient-text text-glow block mt-1">Mohamed Aslam</span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-400 mb-8 leading-relaxed">
+                    <p class="text-base sm:text-xl text-gray-300 mb-4 sm:mb-5 leading-relaxed">
                         <span class="text-white font-medium">Freelance Software Developer</span> specializing in
-                        <span class="gradient-text-warm font-medium">Web Apps & Custom Hardware Solutions</span>
+                        <span class="gradient-text-warm font-medium">Web Apps &amp; Custom Hardware Solutions</span>
                     </p>
-                    <p class="text-gray-500 mb-10 max-w-lg leading-relaxed">
-                        Transforming complex technical challenges into elegant solutions.
-                        With 4+ years of experience, I bring expertise
-                        in building modern websites, custom software, and advanced macOS hardware configurations.
+                    <p class="text-sm sm:text-base text-gray-400 mb-7 sm:mb-8 max-w-xl leading-relaxed">
+                        Transforming complex technical challenges into elegant solutions. With 4+ years of experience, I bring expertise in building modern websites, custom software, and advanced macOS hardware configurations.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="magnetic-btn group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold overflow-hidden">
-                            <span class="relative z-10 flex items-center">
+                    <div class="flex flex-wrap gap-3 sm:gap-4">
+                        <a href="#contact" class="group relative px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold text-sm sm:text-base overflow-hidden">
+                            <span class="relative z-10 flex items-center justify-center">
                                 Let's Talk
                                 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </span>
                         </a>
-                        <a href="projects.html" class="magnetic-btn px-8 py-4 rounded-full glass hover:bg-white/10 font-semibold transition-all text-purple-300">
+                        <a href="projects.html" class="px-6 sm:px-8 py-3.5 sm:py-4 rounded-full glass hover:bg-white/10 font-semibold text-sm sm:text-base text-purple-300 transition-all">
                             Watch Project Videos
                         </a>
                     </div>
-                    <div class="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-white/10">
+                    <div class="grid grid-cols-3 gap-6 sm:gap-8 mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-white/10 text-center sm:text-left">
                         <div>
-                            <p class="text-4xl font-bold gradient-text font-space">4+</p>
-                            <p class="text-gray-500 text-sm mt-1">Years Experience</p>
+                            <p class="text-2xl sm:text-4xl font-bold gradient-text" style="font-family:'Space Grotesk',system-ui">4+</p>
+                            <p class="text-gray-400 text-xs sm:text-sm mt-1">Years Experience</p>
                         </div>
                         <div>
-                            <p class="text-4xl font-bold gradient-text font-space">500+</p>
-                            <p class="text-gray-500 text-sm mt-1">Devices Repaired</p>
+                            <p class="text-2xl sm:text-4xl font-bold gradient-text" style="font-family:'Space Grotesk',system-ui">500+</p>
+                            <p class="text-gray-400 text-xs sm:text-sm mt-1">Devices Repaired</p>
                         </div>
                         <div>
-                            <p class="text-4xl font-bold gradient-text font-space">100%</p>
-                            <p class="text-gray-500 text-sm mt-1">Client Satisfaction</p>
+                            <p class="text-2xl sm:text-4xl font-bold gradient-text" style="font-family:'Space Grotesk',system-ui">100%</p>
+                            <p class="text-gray-400 text-xs sm:text-sm mt-1">Client Satisfaction</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="order-1 lg:order-2 flex justify-center reveal">
                     <div class="relative z-10">
-                        <div class="absolute inset-[-15%] rounded-full bg-gradient-to-tr from-purple-500/20 via-transparent to-blue-500/20 blur-2xl animate-[spin_8s_linear_infinite] z-0 pointer-events-none"></div>
-                        
-                        <div class="relative w-72 h-[26rem] md:w-80 md:h-[32rem] rounded-3xl border-gradient glow-purple flex justify-center items-end bg-gradient-to-t from-purple-600/10 to-transparent">
-                            
-                            <div class="absolute -top-8 -left-8 md:-top-4 md:-left-12 glass-strong rounded-2xl p-3 md:p-4 z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-top-left">
+                        <div class="absolute inset-[-18%] sm:inset-[-15%] rounded-full bg-gradient-to-tr from-purple-500/20 via-transparent to-blue-500/20 blur-2xl animate-[spin_8s_linear_infinite] pointer-events-none -z-10"></div>
+
+                        <div class="hero-avatar-shell relative w-[15rem] h-[24rem] sm:w-72 sm:h-[26rem] md:w-80 md:h-[32rem] rounded-3xl border-gradient glow-purple flex justify-center items-end bg-gradient-to-t from-purple-600/10 to-transparent overflow-hidden">
+                            <div class="absolute -top-7 -left-7 sm:-top-8 sm:-left-8 glass-strong rounded-2xl p-3 sm:p-4 z-20">
                                 <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                                        <i class="fas fa-microchip text-white text-xl"></i>
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                                        <i class="fas fa-microchip text-white text-lg sm:text-xl"></i>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-white">Hardware Expert</p>
-                                        <p class="text-xs text-gray-400">PC • Mobile • Network</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="absolute top-1/4 -right-10 md:-right-12 glass-strong rounded-2xl p-3 md:p-4 glow-purple z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-right">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-600 to-gray-900 flex items-center justify-center border border-gray-500/30">
-                                        <i class="fab fa-apple text-white text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold text-white">macOS Expert</p>
-                                        <p class="text-xs text-gray-400">Intel & AMD Installs</p>
+                                        <p class="font-semibold text-white text-xs sm:text-sm">Hardware Expert</p>
+                                        <p class="text-[0.65rem] sm:text-xs text-gray-400">PC • Mobile • Network</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="absolute inset-0 preserve-3d z-30 pointer-events-none">
-                                <div class="absolute inset-[-30%] md:inset-[-40%] rounded-full border-[4px] border-cyan-400/20 border-t-cyan-400 border-r-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]" style="animation: orbit1 8s linear infinite;"></div>
-                                
-                                <div class="absolute inset-[-15%] md:inset-[-20%] rounded-full border-[4px] border-purple-500/20 border-b-purple-500 border-l-purple-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]" style="animation: orbit2 12s linear infinite;"></div>
-                                
-                                <img src="imgs/profile.png" alt="Mohamed Aslam" class="absolute bottom-0 w-[745px] md:w-[1000px] max-w-none h-auto object-contain drop-shadow-[0_0_30px_rgba(139,92,246,0.6)]"
-                                     style="transform: translateX(-50%) translateZ(50px); left: 50%;"
-                                     onerror="this.src='https://ui-avatars.com/api/?name=Standing+Photo&size=400&background=transparent&color=fff&bold=true'">
-                            </div>
-
-                            <div class="absolute -bottom-8 -right-8 md:-bottom-4 md:-right-12 glass-strong rounded-2xl p-3 md:p-4 glow-blue z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-bottom-right">
+                            <div class="absolute top-1/4 -right-9 sm:-right-10 glass-strong rounded-2xl p-3 sm:p-4 glow-purple z-20">
                                 <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-                                        <i class="fas fa-code text-white text-xl"></i>
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-gray-600 to-gray-900 flex items-center justify-center border border-gray-500/30">
+                                        <i class="fab fa-apple text-white text-lg sm:text-xl"></i>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-white">Web Developer</p>
-                                        <p class="text-xs text-gray-400">HTML • CSS • JS</p>
+                                        <p class="font-semibold text-white text-xs sm:text-sm">macOS Expert</p>
+                                        <p class="text-[0.65rem] sm:text-xs text-gray-400">Intel &amp; AMD Installs</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-1/4 -left-10 md:-left-12 glass-strong rounded-2xl p-3 md:p-4 glow-blue z-50 scale-[0.65] sm:scale-[0.8] md:scale-100 origin-left">
+                            <div class="absolute -bottom-7 -right-7 sm:-bottom-8 sm:-right-8 glass-strong rounded-2xl p-3 sm:p-4 glow-blue z-20">
                                 <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                                        <i class="fas fa-brain text-white text-xl"></i>
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                                        <i class="fas fa-code text-white text-lg sm:text-xl"></i>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-white">Generative AI</p>
-                                        <p class="text-xs text-gray-400">Expertise</p>
+                                        <p class="font-semibold text-white text-xs sm:text-sm">Web Developer</p>
+                                        <p class="text-[0.65rem] sm:text-xs text-gray-400">HTML • CSS • JS</p>
                                     </div>
                                 </div>
                             </div>
-                            
+
+                            <div class="absolute bottom-1/4 -left-8 sm:-left-10 glass-strong rounded-2xl p-3 sm:p-4 glow-blue z-20">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                                        <i class="fas fa-brain text-white text-lg sm:text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white text-xs sm:text-sm">Generative AI</p>
+                                        <p class="text-[0.65rem] sm:text-xs text-gray-400">Expertise</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="absolute inset-0 preserve-3d z-10 pointer-events-none">
+                                <div class="absolute inset-[-26%] sm:inset-[-30%] rounded-full border-[3px] sm:border-[4px] border-cyan-400/25 border-t-cyan-400 border-r-cyan-400 drop-shadow-[0_0_16px_rgba(34,211,238,0.85)]" style="animation: orbit1 10s linear infinite"></div>
+                                <div class="absolute inset-[-14%] sm:inset-[-18%] rounded-full border-[3px] sm:border-[4px] border-purple-500/25 border-b-purple-500 border-l-purple-500 drop-shadow-[0_0_18px_rgba(168,85,247,0.9)]" style="animation: orbit2 14s linear infinite"></div>
+
+                                <img src="imgs/profile.png" alt="Mohamed Aslam" class="absolute bottom-0 w-[700px] sm:w-[820px] md:w-[1000px] max-w-none h-auto object-contain drop-shadow-[0_0_30px_rgba(129,140,248,0.7)]" style="transform:translateX(-50%) translateZ(40px); left:50%" onerror="this.src='https://ui-avatars.com/api/?name=Mohamed+Aslam&size=400&background=111827&color=fff&bold=true'" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block z-50">
-            <a href="#about" class="flex flex-col items-center text-gray-500 hover:text-white transition-colors">
-                <span class="text-xs mb-2">Scroll Down</span>
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 hidden md:block z-20">
+            <a href="#about" class="flex flex-col items-center text-gray-500 hover:text-white transition-colors text-xs">
+                <span class="mb-2">Scroll Down</span>
                 <div class="w-6 h-10 rounded-full border-2 border-current flex justify-center pt-2">
                     <div class="w-1 h-2 bg-current rounded-full animate-bounce"></div>
                 </div>
@@ -221,239 +433,236 @@
         </div>
     </section>
 
-    <section id="about" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div class="reveal">
-                    <div class="relative">
-                        <div class="glass-strong rounded-3xl p-3">
-                            <img src="https://res.cloudinary.com/dvrkgxr4p/image/upload/v1771402851/file_00000000416871fa98cf173110675075_sveqst.png" alt="Workspace" class="rounded-2xl w-full">
+    <!-- ABOUT -->
+    <section id="about" class="py-14 sm:py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+                <div class="reveal order-2 lg:order-2">
+                    <p class="text-purple-400 font-semibold mb-3 tracking-[0.2em] uppercase text-xs sm:text-sm">About Me</p>
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" style="font-family:'Space Grotesk',system-ui">
+                        Passionate <span class="gradient-text">IT Professional</span><br class="hidden sm:block" />Based in Sri Lanka
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 sm:mb-6">
+                        I'm a dedicated freelance developer and IT professional with a deep passion for technology. Currently pursuing my Higher National Diploma in Computing Software Engineering, I combine hands-on practical experience with strong theoretical knowledge to build solutions for clients worldwide.
+                    </p>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 sm:mb-6">
+                        My expertise spans from full-stack web development and high-level software coding with Python and C#, to advanced hardware configuration. I also specialize in configuring and installing <b>macOS (Hackintosh)</b> on any Windows laptop featuring Intel i-series or AMD processors.
+                    </p>
+                    <p class="text-sm sm:text-base text-gray-200 font-medium leading-relaxed mb-7 sm:mb-8 border-l-4 border-purple-500 pl-3 sm:pl-4">
+                        Furthermore, I have extensive expertise in Generative AI. I am highly skilled in using modern AI tools to accelerate development, engineer creative prompts, and implement smart generative solutions into everyday workflows.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6 mb-7 sm:mb-9">
+                        <div class="glass rounded-xl p-3 sm:p-4 text-xs sm:text-sm">
+                            <p class="text-gray-500">Location</p>
+                            <p class="text-white font-medium mt-0.5">Colombo, Sri Lanka</p>
                         </div>
-                        <div class="absolute -bottom-8 -right-8 glass-strong rounded-2xl p-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                                    <span class="text-2xl font-bold">4+</span>
+                        <div class="glass rounded-xl p-3 sm:p-4 text-xs sm:text-sm">
+                            <p class="text-gray-500">Education</p>
+                            <p class="text-white font-medium mt-0.5">HND Computing</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 sm:p-4 text-xs sm:text-sm">
+                            <p class="text-gray-500">Experience</p>
+                            <p class="text-white font-medium mt-0.5">4+ Years</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 sm:p-4 text-xs sm:text-sm">
+                            <p class="text-gray-500">Availability</p>
+                            <p class="text-green-400 font-medium mt-0.5">Freelance Work</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold text-sm sm:text-base hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+                        Download CV
+                        <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+                <div class="reveal order-1 lg:order-1">
+                    <div class="relative max-w-md mx-auto">
+                        <div class="glass-strong rounded-3xl p-2.5 sm:p-3">
+                            <img src="https://res.cloudinary.com/dvrkgxr4p/image/upload/v1771402851/file_00000000416871fa98cf173110675075_sveqst.png" alt="Workspace" class="rounded-2xl w-full object-cover" />
+                        </div>
+                        <div class="absolute -bottom-7 -right-5 sm:-bottom-8 sm:-right-8 glass-strong rounded-2xl px-4 py-4 sm:p-6 w-[78%] sm:w-auto">
+                            <div class="flex items-center space-x-3 sm:space-x-4">
+                                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                    <span class="text-xl sm:text-2xl font-bold">4+</span>
                                 </div>
                                 <div>
-                                    <p class="text-2xl font-bold text-white">Years</p>
-                                    <p class="text-gray-400">Professional Experience</p>
+                                    <p class="text-lg sm:text-2xl font-bold text-white">Years</p>
+                                    <p class="text-gray-400 text-xs sm:text-sm">Professional Experience</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="reveal">
-                    <p class="text-purple-400 font-semibold mb-4 tracking-wider uppercase text-sm">About Me</p>
-                    <h2 class="text-4xl md:text-5xl font-bold font-space mb-6">
-                        Passionate <span class="gradient-text">IT Professional</span><br>Based in Sri Lanka
-                    </h2>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        I'm a dedicated freelance developer and IT professional with a deep passion for technology.
-                        Currently pursuing my Higher National Diploma in Computing Software Engineering,
-                        I combine hands-on practical experience with strong theoretical knowledge to build solutions for clients worldwide.
-                    </p>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        My expertise spans from full-stack web development and high-level software coding with Python and C#, to advanced hardware configuration. 
-                        I also specialize in configuring and installing <b>macOS (Hackintosh)</b> on any Windows laptop featuring Intel i-series or AMD processors.
-                    </p>
-                    <p class="text-gray-300 font-medium leading-relaxed mb-8 border-l-4 border-purple-500 pl-4">
-                        Furthermore, I have extensive expertise in Generative AI. I am highly skilled in using modern AI tools to accelerate development, engineer creative prompts, and implement smart generative solutions into everyday workflows.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 mb-10">
-                        <div class="glass rounded-xl p-4">
-                            <p class="text-gray-500 text-sm">Location</p>
-                            <p class="text-white font-medium">Colombo, Sri Lanka</p>
-                        </div>
-                        <div class="glass rounded-xl p-4">
-                            <p class="text-gray-500 text-sm">Education</p>
-                            <p class="text-white font-medium">HND Computing</p>
-                        </div>
-                        <div class="glass rounded-xl p-4">
-                            <p class="text-gray-500 text-sm">Experience</p>
-                            <p class="text-white font-medium">4+ Years</p>
-                        </div>
-                        <div class="glass rounded-xl p-4">
-                            <p class="text-gray-500 text-sm">Availability</p>
-                            <p class="text-green-400 font-medium">Freelance Work</p>
-                        </div>
-                    </div>
-                    <a href="#contact" class="magnetic-btn inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
-                        Download CV
-                        <i class="fas fa-download ml-2"></i>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <p class="text-purple-400 font-semibold mb-4 tracking-wider uppercase text-sm">My Expertise</p>
-                <h2 class="text-4xl md:text-5xl font-bold font-space">
-                    Skills & <span class="gradient-text">Technologies</span>
+    <!-- SKILLS -->
+    <section id="skills" class="py-14 sm:py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <p class="text-purple-400 font-semibold mb-3 tracking-[0.2em] uppercase text-xs sm:text-sm">My Expertise</p>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold" style="font-family:'Space Grotesk',system-ui">
+                    Skills &amp; <span class="gradient-text">Technologies</span>
                 </h2>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-16">
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-16">
                 <div class="reveal">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center">
-                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mr-4">
-                            <i class="fas fa-code text-sm"></i>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-7 flex items-center">
+                        <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mr-3 sm:mr-4">
+                            <i class="fas fa-code text-xs sm:text-sm"></i>
                         </span>
                         Technical Skills
                     </h3>
-                    <div class="space-y-6">
-                        <div class="glass rounded-xl p-5 border border-purple-500/30">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium text-white">Generative AI & Prompt Engineering</span>
+                    <div class="space-y-4 sm:space-y-6 text-xs sm:text-sm">
+                        <div class="glass rounded-xl p-4 sm:p-5 border border-purple-500/40">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
+                                <span class="font-medium text-white">Generative AI &amp; Prompt Engineering</span>
                                 <span class="text-purple-400 font-semibold">95%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 95%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:95%"></div>
                             </div>
                         </div>
-                        
-                        <div class="glass rounded-xl p-5 border border-blue-500/30">
-                            <div class="flex justify-between mb-3">
+                        <div class="glass rounded-xl p-4 sm:p-5 border border-blue-500/40">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
                                 <span class="font-medium text-white">macOS / Hackintosh Installs (Intel/AMD)</span>
                                 <span class="text-blue-400 font-semibold">98%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 98%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:98%"></div>
                             </div>
                         </div>
-
-                        <div class="glass rounded-xl p-5">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Web Development (HTML, CSS, JS)</span>
+                        <div class="glass rounded-xl p-4 sm:p-5">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
+                                <span class="font-medium text-white">Web Development (HTML, CSS, JS)</span>
                                 <span class="text-purple-400 font-semibold">80%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 80%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:80%"></div>
                             </div>
                         </div>
-                        <div class="glass rounded-xl p-5">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Hardware Configuration & Repair</span>
+                        <div class="glass rounded-xl p-4 sm:p-5">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
+                                <span class="font-medium text-white">Hardware Configuration &amp; Repair</span>
                                 <span class="text-purple-400 font-semibold">95%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 95%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:95%"></div>
                             </div>
                         </div>
-                        <div class="glass rounded-xl p-5">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Microsoft Office Suite</span>
+                        <div class="glass rounded-xl p-4 sm:p-5">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
+                                <span class="font-medium text-white">Microsoft Office Suite</span>
                                 <span class="text-purple-400 font-semibold">90%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 90%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:90%"></div>
                             </div>
                         </div>
-                        <div class="glass rounded-xl p-5">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Networking & Troubleshooting</span>
+                        <div class="glass rounded-xl p-4 sm:p-5">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
+                                <span class="font-medium text-white">Networking &amp; Troubleshooting</span>
                                 <span class="text-purple-400 font-semibold">85%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 85%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:85%"></div>
                             </div>
                         </div>
-                        <div class="glass rounded-xl p-5">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Python Programming</span>
+                        <div class="glass rounded-xl p-4 sm:p-5">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
+                                <span class="font-medium text-white">Python Programming</span>
                                 <span class="text-purple-400 font-semibold">75%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 75%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:75%"></div>
                             </div>
                         </div>
-                        <div class="glass rounded-xl p-5">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">C# & SQL Databases</span>
+                        <div class="glass rounded-xl p-4 sm:p-5">
+                            <div class="flex justify-between mb-2.5 sm:mb-3">
+                                <span class="font-medium text-white">C# &amp; SQL Databases</span>
                                 <span class="text-purple-400 font-semibold">70%</span>
                             </div>
-                            <div class="h-2 bg-dark-600 rounded-full overflow-hidden">
-                                <div class="skill-progress h-full" style="width: 70%"></div>
+                            <div class="h-1.5 sm:h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="skill-progress h-full" style="width:70%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="reveal">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center">
-                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mr-4">
-                            <i class="fas fa-tools text-sm"></i>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-7 flex items-center">
+                        <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mr-3 sm:mr-4">
+                            <i class="fas fa-tools text-xs sm:text-sm"></i>
                         </span>
-                        Tools & Technologies
+                        Tools &amp; Technologies
                     </h3>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
-                            <p class="text-sm font-medium">HTML5</p>
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4 text-center text-xs sm:text-sm">
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fab fa-html5 text-3xl sm:text-4xl text-orange-500 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">HTML5</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i>
-                            <p class="text-sm font-medium">CSS3</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fab fa-css3-alt text-3xl sm:text-4xl text-blue-500 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">CSS3</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fab fa-js-square text-4xl text-yellow-400 mb-3"></i>
-                            <p class="text-sm font-medium">JavaScript</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fab fa-js-square text-3xl sm:text-4xl text-yellow-400 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">JavaScript</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fab fa-windows text-4xl text-blue-400 mb-3"></i>
-                            <p class="text-sm font-medium">Windows</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fab fa-windows text-3xl sm:text-4xl text-blue-400 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">Windows</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fab fa-linux text-4xl text-yellow-400 mb-3"></i>
-                            <p class="text-sm font-medium">Linux</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fab fa-linux text-3xl sm:text-4xl text-yellow-400 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">Linux</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fab fa-python text-4xl text-blue-300 mb-3"></i>
-                            <p class="text-sm font-medium">Python</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fab fa-python text-3xl sm:text-4xl text-blue-300 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">Python</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fas fa-database text-4xl text-purple-400 mb-3"></i>
-                            <p class="text-sm font-medium">SQL</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fas fa-database text-3xl sm:text-4xl text-purple-400 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">SQL</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fab fa-android text-4xl text-green-400 mb-3"></i>
-                            <p class="text-sm font-medium">Android</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fab fa-android text-3xl sm:text-4xl text-green-400 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">Android</p>
                         </div>
-                        <div class="premium-card glass rounded-xl p-5 text-center">
-                            <i class="fas fa-robot text-4xl text-cyan-400 mb-3"></i>
-                            <p class="text-sm font-medium">AI Tools</p>
+                        <div class="premium-card glass rounded-xl p-4 sm:p-5">
+                            <i class="fas fa-robot text-3xl sm:text-4xl text-cyan-400 mb-2 sm:mb-3"></i>
+                            <p class="font-medium">AI Tools</p>
                         </div>
                     </div>
 
-                    <h3 class="text-2xl font-bold mt-12 mb-6">Professional Soft Skills</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                    <h3 class="text-xl sm:text-2xl font-bold mt-9 sm:mt-12 mb-4 sm:mb-6">Professional Soft Skills</h3>
+                    <div class="flex flex-wrap gap-2.5 sm:gap-3 text-xs sm:text-sm">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-handshake text-yellow-500 mr-2"></i>Client Relations
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-clock text-blue-400 mr-2"></i>Time Management
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-search text-green-400 mr-2"></i>Attention to Detail
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-brain text-purple-400 mr-2"></i>Analytical Thinking
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-tasks text-purple-400 mr-2"></i>Multitasking
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-comments text-cyan-400 mr-2"></i>Communication
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>Problem Solving
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-sync text-green-400 mr-2"></i>Adaptability
                         </span>
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                        <span class="px-3.5 py-2 glass rounded-full font-medium flex items-center">
                             <i class="fas fa-users text-pink-400 mr-2"></i>Team Player
                         </span>
                     </div>
@@ -462,350 +671,299 @@
         </div>
     </section>
 
-    <section class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <p class="text-purple-400 font-semibold mb-4 tracking-wider uppercase text-sm">What I Offer</p>
-                <h2 class="text-4xl md:text-5xl font-bold font-space">
+    <!-- SERVICES -->
+    <section class="py-14 sm:py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <p class="text-purple-400 font-semibold mb-3 tracking-[0.2em] uppercase text-xs sm:text-sm">What I Offer</p>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold" style="font-family:'Space Grotesk',system-ui">
                     Freelance <span class="gradient-text">Services</span>
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                
-                <div class="premium-card glass rounded-3xl p-8 reveal">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center mb-6">
-                        <i class="fas fa-code text-2xl"></i>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal text-sm sm:text-base">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center mb-5 sm:mb-6">
+                        <i class="fas fa-code text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Software & Web Development</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Software &amp; Web Development</h3>
+                    <p class="text-gray-400 leading-relaxed mb-5 sm:mb-6">
                         Custom freelance software solutions and modern, responsive websites built with HTML, CSS, JavaScript, Python, and C#.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center"><i class="fas fa-check text-orange-400 mr-2"></i>Custom Web Apps</li>
-                        <li class="flex items-center"><i class="fas fa-check text-orange-400 mr-2"></i>Python & C# Programs</li>
-                        <li class="flex items-center"><i class="fas fa-check text-orange-400 mr-2"></i>Business Portfolios</li>
+                    <ul class="space-y-2 text-xs sm:text-sm text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-check text-orange-400 mr-2 mt-0.5"></i>Custom Web Apps</li>
+                        <li class="flex items-start"><i class="fas fa-check text-orange-400 mr-2 mt-0.5"></i>Python &amp; C# Programs</li>
+                        <li class="flex items-start"><i class="fas fa-check text-orange-400 mr-2 mt-0.5"></i>Business Portfolios</li>
                     </ul>
                 </div>
 
-                <div class="premium-card glass rounded-3xl p-8 reveal" style="animation-delay: 0.1s;">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-600 to-gray-900 flex items-center justify-center mb-6 border border-gray-500/30">
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal text-sm sm:text-base" style="animation-delay:0.1s">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-gray-600 to-gray-900 flex items-center justify-center mb-5 sm:mb-6 border border-gray-500/30">
                         <i class="fab fa-apple text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Custom macOS Installs</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Custom macOS Installs</h3>
+                    <p class="text-gray-400 leading-relaxed mb-5 sm:mb-6">
                         Expert Hackintosh configuration. Installing and optimizing macOS on Windows laptops featuring Intel i-Series or AMD processors.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center"><i class="fas fa-check text-gray-400 mr-2"></i>Intel & AMD Support</li>
-                        <li class="flex items-center"><i class="fas fa-check text-gray-400 mr-2"></i>Driver Optimization</li>
-                        <li class="flex items-center"><i class="fas fa-check text-gray-400 mr-2"></i>Seamless Apple Experience</li>
+                    <ul class="space-y-2 text-xs sm:text-sm text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-check text-gray-300 mr-2 mt-0.5"></i>Intel &amp; AMD Support</li>
+                        <li class="flex items-start"><i class="fas fa-check text-gray-300 mr-2 mt-0.5"></i>Driver Optimization</li>
+                        <li class="flex items-start"><i class="fas fa-check text-gray-300 mr-2 mt-0.5"></i>Seamless Apple Experience</li>
                     </ul>
                 </div>
 
-                <div class="premium-card glass rounded-3xl p-8 reveal" style="animation-delay: 0.2s;">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6">
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal text-sm sm:text-base" style="animation-delay:0.2s">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-5 sm:mb-6">
                         <i class="fas fa-desktop text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Computer Repair</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        Expert hardware configuration, software installation, troubleshooting,
-                        and deep system upgrades for desktops and laptops.
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Computer Repair</h3>
+                    <p class="text-gray-400 leading-relaxed mb-5 sm:mb-6">
+                        Expert hardware configuration, software installation, troubleshooting, and deep system upgrades for desktops and laptops.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2"></i>Hardware Diagnostics</li>
-                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2"></i>OS Installation</li>
-                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2"></i>Performance Optimization</li>
+                    <ul class="space-y-2 text-xs sm:text-sm text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-check text-purple-400 mr-2 mt-0.5"></i>Hardware Diagnostics</li>
+                        <li class="flex items-start"><i class="fas fa-check text-purple-400 mr-2 mt-0.5"></i>OS Installation</li>
+                        <li class="flex items-start"><i class="fas fa-check text-purple-400 mr-2 mt-0.5"></i>Performance Optimization</li>
                     </ul>
                 </div>
 
-                <div class="premium-card glass rounded-3xl p-8 reveal" style="animation-delay: 0.3s;">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6">
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal text-sm sm:text-base" style="animation-delay:0.3s">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 sm:mb-6">
                         <i class="fas fa-mobile-alt text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Smartphone Repair</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        Comprehensive smartphone troubleshooting, unlocking services,
-                        software issues, and data recovery solutions.
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Smartphone Repair</h3>
+                    <p class="text-gray-400 leading-relaxed mb-5 sm:mb-6">
+                        Comprehensive smartphone troubleshooting, unlocking services, software issues, and data recovery solutions.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-2"></i>Screen & Battery Repair</li>
-                        <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-2"></i>FRP & iCloud Bypass</li>
-                        <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-2"></i>Software Flashing</li>
+                    <ul class="space-y-2 text-xs sm:text-sm text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-check text-blue-400 mr-2 mt-0.5"></i>Screen &amp; Battery Repair</li>
+                        <li class="flex items-start"><i class="fas fa-check text-blue-400 mr-2 mt-0.5"></i>FRP &amp; iCloud Bypass</li>
+                        <li class="flex items-start"><i class="fas fa-check text-blue-400 mr-2 mt-0.5"></i>Software Flashing</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <p class="text-purple-400 font-semibold mb-4 tracking-wider uppercase text-sm">My Journey</p>
-                <h2 class="text-4xl md:text-5xl font-bold font-space">
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-14 sm:py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <p class="text-purple-400 font-semibold mb-3 tracking-[0.2em] uppercase text-xs sm:text-sm">My Journey</p>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold" style="font-family:'Space Grotesk',system-ui">
                     Work <span class="gradient-text">Experience</span>
                 </h2>
             </div>
 
-            <div class="max-w-4xl mx-auto space-y-8">
-                <div class="premium-card glass rounded-3xl p-8 reveal">
-                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-shopping-cart text-xl"></i>
+            <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8 text-sm sm:text-base">
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal">
+                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 sm:mb-6 gap-4">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-shopping-cart text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold">E-Commerce Specialist</h3>
-                                <p class="text-green-400 font-medium">Zoko Asia</p>
-                                <p class="text-gray-500 text-sm mt-1">
+                                <h3 class="text-lg sm:text-xl font-bold">E-Commerce Specialist</h3>
+                                <p class="text-green-400 font-medium text-sm sm:text-base">Zoko Asia</p>
+                                <p class="text-gray-500 text-xs sm:text-sm mt-1">
                                     <i class="fas fa-map-marker-alt mr-1"></i>
                                     Colombo, Sri Lanka
                                 </p>
                             </div>
                         </div>
-                        <span class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-green-500/20 text-green-300 text-sm font-semibold flex items-center">
+                        <span class="self-start mt-1 md:mt-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-green-500/20 text-green-300 text-xs sm:text-sm font-semibold flex items-center">
                             <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
                             Jan 2025 - Present
                         </span>
                     </div>
-                    <ul class="space-y-3 text-gray-400 ml-18">
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-green-400 mr-3 mt-1 text-sm"></i>
-                            Managing e-commerce platforms and online store operations
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-green-400 mr-3 mt-1 text-sm"></i>
-                            Optimizing product listings and digital marketing strategies
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-green-400 mr-3 mt-1 text-sm"></i>
-                            Analyzing sales data and improving customer experience
-                        </li>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-400 ml-18">
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-green-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Managing e-commerce platforms and online store operations</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-green-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Optimizing product listings and digital marketing strategies</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-green-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Analyzing sales data and improving customer experience</li>
                     </ul>
                 </div>
 
-                <div class="premium-card glass rounded-3xl p-8 reveal">
-                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-microchip text-xl"></i>
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal">
+                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 sm:mb-6 gap-4">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-microchip text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold">Hardware Technician</h3>
-                                <p class="text-blue-400 font-medium">Sonad Computers</p>
-                                <p class="text-gray-500 text-sm mt-1">
+                                <h3 class="text-lg sm:text-xl font-bold">Hardware Technician</h3>
+                                <p class="text-blue-400 font-medium text-sm sm:text-base">Sonad Computers</p>
+                                <p class="text-gray-500 text-xs sm:text-sm mt-1">
                                     <i class="fas fa-map-marker-alt mr-1"></i>
                                     Colombo, Sri Lanka
                                 </p>
                             </div>
                         </div>
-                        <span class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold">
-                            2 Months
-                        </span>
+                        <span class="self-start mt-1 md:mt-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-blue-500/20 text-blue-300 text-xs sm:text-sm font-semibold">2 Months</span>
                     </div>
-                    <ul class="space-y-3 text-gray-400 ml-18">
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-blue-400 mr-3 mt-1 text-sm"></i>
-                            Diagnosed and repaired computer hardware issues
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-blue-400 mr-3 mt-1 text-sm"></i>
-                            Assembled and configured desktop systems
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-blue-400 mr-3 mt-1 text-sm"></i>
-                            Performed system upgrades and maintenance
-                        </li>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-400 ml-18">
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-blue-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Diagnosed and repaired computer hardware issues</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-blue-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Assembled and configured desktop systems</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-blue-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Performed system upgrades and maintenance</li>
                     </ul>
                 </div>
 
-                <div class="premium-card glass rounded-3xl p-8 reveal">
-                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-tooth text-xl"></i>
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal">
+                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 sm:mb-6 gap-4">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-tooth text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold">Lab Technician</h3>
-                                <p class="text-cyan-400 font-medium">Align Dental Care</p>
-                                <p class="text-gray-500 text-sm mt-1">
+                                <h3 class="text-lg sm:text-xl font-bold">Lab Technician</h3>
+                                <p class="text-cyan-400 font-medium text-sm sm:text-base">Align Dental Care</p>
+                                <p class="text-gray-500 text-xs sm:text-sm mt-1">
                                     <i class="fas fa-map-marker-alt mr-1"></i>
                                     Colombo, Sri Lanka
                                 </p>
                             </div>
                         </div>
-                        <span class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300 text-sm font-semibold">
-                            2 Months
-                        </span>
+                        <span class="self-start mt-1 md:mt-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-cyan-500/20 text-cyan-300 text-xs sm:text-sm font-semibold">2 Months</span>
                     </div>
-                    <ul class="space-y-3 text-gray-400 ml-18">
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-cyan-400 mr-3 mt-1 text-sm"></i>
-                            Supported dental laboratory operations and procedures
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-cyan-400 mr-3 mt-1 text-sm"></i>
-                            Maintained lab equipment and ensured quality standards
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-cyan-400 mr-3 mt-1 text-sm"></i>
-                            Assisted with technical documentation and record keeping
-                        </li>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-400 ml-18">
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-cyan-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Supported dental laboratory operations and procedures</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-cyan-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Maintained lab equipment and ensured quality standards</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-cyan-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Assisted with technical documentation and record keeping</li>
                     </ul>
                 </div>
 
-                <div class="premium-card glass rounded-3xl p-8 reveal">
-                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-mobile-alt text-xl"></i>
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal">
+                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 sm:mb-6 gap-4">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-mobile-alt text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold">Technician & Cashier</h3>
-                                <p class="text-purple-400 font-medium">Royal Mobile Services (PVT) Ltd</p>
-                                <p class="text-gray-500 text-sm mt-1">
+                                <h3 class="text-lg sm:text-xl font-bold">Technician &amp; Cashier</h3>
+                                <p class="text-purple-400 font-medium text-sm sm:text-base">Royal Mobile Services (PVT) Ltd</p>
+                                <p class="text-gray-500 text-xs sm:text-sm mt-1">
                                     <i class="fas fa-map-marker-alt mr-1"></i>
                                     No.06, Justice Akbar Mawatha, Colombo 02
                                 </p>
                             </div>
                         </div>
-                        <span class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 text-sm font-semibold">
-                            2019 - 2022 (3 Years)
-                        </span>
+                        <span class="self-start mt-1 md:mt-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-purple-500/20 text-purple-300 text-xs sm:text-sm font-semibold">2019 - 2022 (3 Years)</span>
                     </div>
-                    <ul class="space-y-3 text-gray-400 ml-18">
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-purple-400 mr-3 mt-1 text-sm"></i>
-                            Provided expert technical support for computer and smartphone repairs
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-purple-400 mr-3 mt-1 text-sm"></i>
-                            Managed cash transactions and delivered excellent customer service
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-purple-400 mr-3 mt-1 text-sm"></i>
-                            Performed hardware diagnostics, software troubleshooting, and device unlocking
-                        </li>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-400 ml-18">
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-purple-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Provided expert technical support for computer and smartphone repairs</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-purple-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Managed cash transactions and delivered excellent customer service</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-purple-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Performed hardware diagnostics, software troubleshooting, and device unlocking</li>
                     </ul>
                 </div>
 
-                <div class="premium-card glass rounded-3xl p-8 reveal">
-                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-laptop-code text-xl"></i>
+                <div class="premium-card glass rounded-3xl p-6 sm:p-8 reveal">
+                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 sm:mb-6 gap-4">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-laptop-code text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold">Freelance Technician & Web Developer</h3>
-                                <p class="text-orange-400 font-medium">Self-Employed</p>
-                                <p class="text-gray-500 text-sm mt-1">
+                                <h3 class="text-lg sm:text-xl font-bold">Freelance Technician &amp; Web Developer</h3>
+                                <p class="text-orange-400 font-medium text-sm sm:text-base">Self-Employed</p>
+                                <p class="text-gray-500 text-xs sm:text-sm mt-1">
                                     <i class="fas fa-globe mr-1"></i>
                                     Colombo, Sri Lanka
                                 </p>
                             </div>
                         </div>
-                        <span class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-orange-500/20 text-orange-300 text-sm font-semibold flex items-center">
+                        <span class="self-start mt-1 md:mt-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-orange-500/20 text-orange-300 text-xs sm:text-sm font-semibold flex items-center">
                             <span class="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></span>
                             Ongoing
                         </span>
                     </div>
-                    <ul class="space-y-3 text-gray-400 ml-18">
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-orange-400 mr-3 mt-1 text-sm"></i>
-                            Upgrade and repair desktops, smartphones, and laptops
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-orange-400 mr-3 mt-1 text-sm"></i>
-                            Web development using HTML, CSS, JavaScript, and modern frameworks
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chevron-right text-orange-400 mr-3 mt-1 text-sm"></i>
-                            Software reinstallation, flashing, FRP/iCloud bypass, password recovery
-                        </li>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-400 ml-18">
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-orange-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Upgrade and repair desktops, smartphones, and laptops</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-orange-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Web development using HTML, CSS, JavaScript, and modern frameworks</li>
+                        <li class="flex items-start"><i class="fas fa-chevron-right text-orange-400 mr-2 sm:mr-3 mt-0.5 text-xs"></i>Software reinstallation, flashing, FRP/iCloud bypass, password recovery</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="education" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <p class="text-purple-400 font-semibold mb-4 tracking-wider uppercase text-sm">Academic Background</p>
-                <h2 class="text-4xl md:text-5xl font-bold font-space">
+    <!-- EDUCATION -->
+    <section id="education" class="py-14 sm:py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <p class="text-purple-400 font-semibold mb-3 tracking-[0.2em] uppercase text-xs sm:text-sm">Academic Background</p>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold" style="font-family:'Space Grotesk',system-ui">
                     My <span class="gradient-text">Education</span>
                 </h2>
             </div>
 
             <div class="max-w-4xl mx-auto relative">
-                <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 timeline-line transform md:-translate-x-1/2"></div>
+                <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px timeline-line transform md:-translate-x-1/2"></div>
 
-                <div class="relative mb-12 reveal">
-                    <div class="flex items-center md:justify-center mb-4">
+                <div class="relative mb-8 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-3 sm:mb-4">
                         <div class="w-4 h-4 timeline-dot rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
                     </div>
                     <div class="ml-16 md:ml-0 md:w-5/12 md:mr-auto">
-                        <div class="glass rounded-2xl p-6 premium-card">
+                        <div class="glass rounded-2xl p-5 sm:p-6 premium-card text-sm sm:text-base">
                             <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-semibold">Currently Pursuing</span>
-                            <h3 class="text-lg font-bold mt-3">Pearson BTEC Level 5 HND</h3>
-                            <p class="text-purple-400 font-medium">Computing Software Engineering</p>
-                            <p class="text-gray-500 text-sm mt-2">Esoft Metro Campus, Nugegoda</p>
+                            <h3 class="text-base sm:text-lg font-bold mt-3">Pearson BTEC Level 5 HND</h3>
+                            <p class="text-purple-400 font-medium text-sm sm:text-base">Computing Software Engineering</p>
+                            <p class="text-gray-500 text-xs sm:text-sm mt-2">Esoft Metro Campus, Nugegoda</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative mb-12 reveal">
-                    <div class="flex items-center md:justify-center mb-4">
+                <div class="relative mb-8 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-3 sm:mb-4">
                         <div class="w-4 h-4 timeline-dot rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
                     </div>
                     <div class="ml-16 md:ml-auto md:w-5/12">
-                        <div class="glass rounded-2xl p-6 premium-card">
+                        <div class="glass rounded-2xl p-5 sm:p-6 premium-card text-sm sm:text-base">
                             <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-semibold">Completed</span>
-                            <h3 class="text-lg font-bold mt-3">Level 4 Diploma in IT</h3>
-                            <p class="text-blue-400 font-medium">Information Technology</p>
-                            <p class="text-gray-500 text-sm mt-2">Esoft Metro Campus, Nugegoda</p>
+                            <h3 class="text-base sm:text-lg font-bold mt-3">Level 4 Diploma in IT</h3>
+                            <p class="text-blue-400 font-medium text-sm sm:text-base">Information Technology</p>
+                            <p class="text-gray-500 text-xs sm:text-sm mt-2">Esoft Metro Campus, Nugegoda</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative mb-12 reveal">
-                    <div class="flex items-center md:justify-center mb-4">
+                <div class="relative mb-8 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-3 sm:mb-4">
                         <div class="w-4 h-4 timeline-dot rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
                     </div>
                     <div class="ml-16 md:ml-0 md:w-5/12 md:mr-auto">
-                        <div class="glass rounded-2xl p-6 premium-card">
+                        <div class="glass rounded-2xl p-5 sm:p-6 premium-card text-sm sm:text-base">
                             <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-semibold">Completed</span>
-                            <h3 class="text-lg font-bold mt-3">Level 3 Certificate in IT</h3>
-                            <p class="text-cyan-400 font-medium">Information Technology</p>
-                            <p class="text-gray-500 text-sm mt-2">Esoft Metro Campus, Nugegoda</p>
+                            <h3 class="text-base sm:text-lg font-bold mt-3">Level 3 Certificate in IT</h3>
+                            <p class="text-cyan-400 font-medium text-sm sm:text-base">Information Technology</p>
+                            <p class="text-gray-500 text-xs sm:text-sm mt-2">Esoft Metro Campus, Nugegoda</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative mb-12 reveal">
-                    <div class="flex items-center md:justify-center mb-4">
+                <div class="relative mb-8 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-3 sm:mb-4">
                         <div class="w-4 h-4 timeline-dot rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
                     </div>
                     <div class="ml-16 md:ml-auto md:w-5/12">
-                        <div class="glass rounded-2xl p-6 premium-card">
+                        <div class="glass rounded-2xl p-5 sm:p-6 premium-card text-sm sm:text-base">
                             <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-semibold">Completed</span>
-                            <h3 class="text-lg font-bold mt-3">Diploma in Hardware & Networking</h3>
-                            <p class="text-pink-400 font-medium">Computer Hardware</p>
-                            <p class="text-gray-500 text-sm mt-2">Aquinas College</p>
+                            <h3 class="text-base sm:text-lg font-bold mt-3">Diploma in Hardware &amp; Networking</h3>
+                            <p class="text-pink-400 font-medium text-sm sm:text-base">Computer Hardware</p>
+                            <p class="text-gray-500 text-xs sm:text-sm mt-2">Aquinas College</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative reveal">
-                    <div class="flex items-center md:justify-center mb-4">
+                    <div class="flex items-center md:justify-center mb-3 sm:mb-4">
                         <div class="w-4 h-4 timeline-dot rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
                     </div>
                     <div class="ml-16 md:ml-0 md:w-5/12 md:mr-auto">
-                        <div class="glass rounded-2xl p-6 premium-card">
+                        <div class="glass rounded-2xl p-5 sm:p-6 premium-card text-sm sm:text-base">
                             <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-semibold">Completed</span>
-                            <h3 class="text-lg font-bold mt-3">GCE Ordinary Level</h3>
-                            <p class="text-yellow-400 font-medium">Secondary Education</p>
-                            <p class="text-gray-500 text-sm mt-2">Zahira College, Colombo 10</p>
+                            <h3 class="text-base sm:text-lg font-bold mt-3">GCE Ordinary Level</h3>
+                            <p class="text-yellow-400 font-medium text-sm sm:text-base">Secondary Education</p>
+                            <p class="text-gray-500 text-xs sm:text-sm mt-2">Zahira College, Colombo 10</p>
                         </div>
                     </div>
                 </div>
@@ -813,96 +971,96 @@
         </div>
     </section>
 
-    <section id="contact" class="py-32 relative hero-gradient">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <p class="text-purple-400 font-semibold mb-4 tracking-wider uppercase text-sm">Get In Touch</p>
-                <h2 class="text-4xl md:text-5xl font-bold font-space">
+    <!-- CONTACT -->
+    <section id="contact" class="py-14 sm:py-24 relative hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <p class="text-purple-400 font-semibold mb-3 tracking-[0.2em] uppercase text-xs sm:text-sm">Get In Touch</p>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold" style="font-family:'Space Grotesk',system-ui">
                     Let's Work <span class="gradient-text">Together</span>
                 </h2>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-                <div class="reveal">
-                    <h3 class="text-2xl font-bold mb-6">Ready to start your next project?</h3>
-                    <p class="text-gray-400 leading-relaxed mb-10">
-                        I'm always open to discussing new projects, custom macOS configurations, or opportunities
-                        to be part of your vision. Let's create something amazing together.
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-16 max-w-6xl mx-auto text-sm sm:text-base">
+                <div class="reveal order-2 lg:order-1">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Ready to start your next project?</h3>
+                    <p class="text-gray-400 leading-relaxed mb-7 sm:mb-10">
+                        I'm always open to discussing new projects, custom macOS configurations, or opportunities to be part of your vision. Let's create something amazing together.
                     </p>
 
-                    <div class="space-y-6">
+                    <div class="space-y-4 sm:space-y-6">
                         <div class="flex items-center">
-                            <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-purple-400 text-xl"></i>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl glass flex items-center justify-center mr-3 sm:mr-4">
+                                <i class="fas fa-envelope text-purple-400 text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <p class="text-gray-500 text-sm">Email</p>
-                                <p class="text-white font-medium">ashrakangaroo6@gmail.com</p>
+                                <p class="text-gray-500 text-xs sm:text-sm">Email</p>
+                                <p class="text-white font-medium text-sm sm:text-base">ashrakangaroo6@gmail.com</p>
                             </div>
                         </div>
-                        <a href="tel:+94750275706" class="flex items-center group">
-                            <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-4 group-hover:bg-blue-500/20 transition-colors">
-                                <i class="fas fa-phone text-blue-400 text-xl"></i>
+                        <a href="tel:+94701397809" class="flex items-center group">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl glass flex items-center justify-center mr-3 sm:mr-4 group-hover:bg-blue-500/20 transition-colors">
+                                <i class="fas fa-phone text-blue-400 text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <p class="text-gray-500 text-sm">Phone</p>
-                                <p class="text-white font-medium group-hover:text-blue-400 transition-colors">+94 70 139 7809</p>
+                                <p class="text-gray-500 text-xs sm:text-sm">Phone</p>
+                                <p class="text-white font-medium text-sm sm:text-base group-hover:text-blue-400 transition-colors">+94 70 139 7809</p>
                             </div>
                         </a>
                         <div class="flex items-center">
-                            <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-cyan-400 text-xl"></i>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl glass flex items-center justify-center mr-3 sm:mr-4">
+                                <i class="fas fa-map-marker-alt text-cyan-400 text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <p class="text-gray-500 text-sm">Location</p>
-                                <p class="text-white font-medium">Colombo 02, Sri Lanka</p>
+                                <p class="text-gray-500 text-xs sm:text-sm">Location</p>
+                                <p class="text-white font-medium text-sm sm:text-base">Colombo 02, Sri Lanka</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap gap-3 mt-10">
-                        <a href="https://github.com/" target="_blank" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700/50 transition-all">
-                            <i class="fab fa-github text-lg"></i>
+                    <div class="flex flex-wrap gap-2.5 sm:gap-3 mt-7 sm:mt-10">
+                        <a href="https://github.com/" target="_blank" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700/50 transition-all">
+                            <i class="fab fa-github text-sm sm:text-lg"></i>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=100079662132233" target="_blank" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600/20 transition-all">
-                            <i class="fab fa-facebook-f text-lg"></i>
+                        <a href="https://www.facebook.com/profile.php?id=100079662132233" target="_blank" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600/25 transition-all">
+                            <i class="fab fa-facebook-f text-sm sm:text-lg"></i>
                         </a>
-                        <a href="https://www.instagram.com/_aslamshar_?igsh=aXF2Y3J4YTV1ZGpm" target="_blank" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-500/20 transition-all">
-                            <i class="fab fa-instagram text-lg"></i>
+                        <a href="https://www.instagram.com/_aslamshar_?igsh=aXF2Y3J4YTV1ZGpm" target="_blank" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-500/25 transition-all">
+                            <i class="fab fa-instagram text-sm sm:text-lg"></i>
                         </a>
-                        <a href="https://youtube.com/@unlockeyy6372" target="_blank" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-500/20 transition-all">
-                            <i class="fab fa-youtube text-lg"></i>
+                        <a href="https://youtube.com/@unlockeyy6372" target="_blank" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-500/25 transition-all">
+                            <i class="fab fa-youtube text-sm sm:text-lg"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/aslam-mulaffer-0a05b5354" target="_blank" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/20 transition-all">
-                            <i class="fab fa-linkedin-in text-lg"></i>
+                        <a href="https://www.linkedin.com/in/aslam-mulaffer-0a05b5354" target="_blank" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/25 transition-all">
+                            <i class="fab fa-linkedin-in text-sm sm:text-lg"></i>
                         </a>
-                        <a href="https://x.com/AslamMulaffer" target="_blank" class="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-500/20 transition-all">
-                            <i class="fa-brands fa-x-twitter text-lg"></i>
+                        <a href="https://x.com/AslamMulaffer" target="_blank" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-500/25 transition-all">
+                            <i class="fa-brands fa-x-twitter text-sm sm:text-lg"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="reveal">
-                    <form action="https://formspree.io/f/mnjbvpro" method="POST" id="contact-form" class="glass-strong rounded-3xl p-8">
-                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="reveal order-1 lg:order-2">
+                    <form action="https://formspree.io/f/mnjbvpro" method="POST" id="contact-form" class="glass-strong rounded-3xl p-6 sm:p-8 space-y-4 sm:space-y-6 text-sm sm:text-base">
+                        <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
                             <div>
-                                <label class="block text-gray-400 text-sm mb-2">Your Name</label>
-                                <input type="text" name="name" class="w-full px-4 py-3 rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all" placeholder="John Doe" required>
+                                <label class="block text-gray-400 text-xs sm:text-sm mb-1.5">Your Name</label>
+                                <input type="text" name="name" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-900/70 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all text-sm" placeholder="John Doe" required />
                             </div>
                             <div>
-                                <label class="block text-gray-400 text-sm mb-2">Your Email</label>
-                                <input type="email" name="email" class="w-full px-4 py-3 rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all" placeholder="john@example.com" required>
+                                <label class="block text-gray-400 text-xs sm:text-sm mb-1.5">Your Email</label>
+                                <input type="email" name="email" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-900/70 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all text-sm" placeholder="john@example.com" required />
                             </div>
                         </div>
-                        <div class="mb-6">
-                            <label class="block text-gray-400 text-sm mb-2">Subject / Service Needed</label>
-                            <input type="text" name="subject" class="w-full px-4 py-3 rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all" placeholder="Web Dev / Hackintosh / Repair" required>
+                        <div>
+                            <label class="block text-gray-400 text-xs sm:text-sm mb-1.5">Subject / Service Needed</label>
+                            <input type="text" name="subject" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-900/70 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all text-sm" placeholder="Web Dev / Hackintosh / Repair" required />
                         </div>
-                        <div class="mb-6">
-                            <label class="block text-gray-400 text-sm mb-2">Message</label>
-                            <textarea name="message" rows="5" class="w-full px-4 py-3 rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all resize-none" placeholder="Tell me about your project..." required></textarea>
+                        <div>
+                            <label class="block text-gray-400 text-xs sm:text-sm mb-1.5">Message</label>
+                            <textarea name="message" rows="5" class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-900/70 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all resize-none text-sm" placeholder="Tell me about your project..." required></textarea>
                         </div>
-                        <button type="submit" class="magnetic-btn w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center">
+                        <button type="submit" class="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center text-sm sm:text-base">
                             Send Message
                             <i class="fas fa-paper-plane ml-2"></i>
                         </button>
@@ -912,25 +1070,26 @@
         </div>
     </section>
 
-    <footer class="py-8 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+    <!-- FOOTER -->
+    <footer class="py-6 sm:py-8 border-t border-white/10 bg-black/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-xs sm:text-sm">
+                <p class="text-gray-500 text-center md:text-left">
                     © 2026 <span class="gradient-text font-semibold">Mohamed Aslam Mulaffer</span>. All rights reserved.
                 </p>
-                <div class="flex space-x-6">
+                <div class="flex items-center space-x-4 sm:space-x-6">
                     <a href="https://github.com/" target="_blank" class="text-gray-500 hover:text-white text-lg transition-colors" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#home" class="text-gray-500 hover:text-white text-sm transition-colors mt-1">Home</a>
-                    <a href="#about" class="text-gray-500 hover:text-white text-sm transition-colors mt-1">About</a>
-                    <a href="#contact" class="text-gray-500 hover:text-white text-sm transition-colors mt-1">Contact</a>
+                    <a href="#home" class="text-gray-500 hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="text-gray-500 hover:text-white transition-colors">About</a>
+                    <a href="#contact" class="text-gray-500 hover:text-white transition-colors">Contact</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hidden hover:shadow-purple-500/25 transition-all z-50">
+    <button id="back-top" class="fixed bottom-4 sm:bottom-7 right-4 sm:right-7 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hidden hover:shadow-purple-500/25 transition-all z-40 flex items-center justify-center text-sm sm:text-base">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -938,303 +1097,51 @@
         // Mobile Menu
         const mobileBtn = document.getElementById('mobile-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+        }
 
         // Back to Top
         const backTop = document.getElementById('back-top');
         window.addEventListener('scroll', () => {
-            backTop.classList.toggle('hidden', window.scrollY <= 300);
+            if (window.scrollY > 320) {
+                backTop.classList.remove('hidden');
+            } else {
+                backTop.classList.add('hidden');
+            }
         });
-        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        backTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-        // Scroll Reveal Animation
+        // Scroll Reveal
         const reveals = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
+            const trigger = window.innerHeight * 0.85;
             reveals.forEach(el => {
                 const top = el.getBoundingClientRect().top;
-                if (top < window.innerHeight - 100) {
+                if (top < trigger) {
                     el.classList.add('active');
                 }
             });
         };
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
+        window.addEventListener('load', revealOnScroll);
 
-        // Navbar scroll effect
+        // Navbar shadow on scroll
         const nav = document.querySelector('nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-2xl');
+            if (window.scrollY > 40) {
+                nav.classList.add('shadow-2xl', 'shadow-black/40');
             } else {
-                nav.classList.remove('shadow-2xl');
+                nav.classList.remove('shadow-2xl', 'shadow-black/40');
             }
         });
     </script>
-
-<script>
-/**
- * Iframe 元素高亮注入脚本
- * 需要在目标网站中引入此脚本来支持跨域 iframe 高亮功能
- *
- * 使用方法：
- * 1. 将此脚本添加到目标网站的 HTML 中
- * 2. 或通过浏览器扩展、用户脚本等方式注入
- */
-
-(function () {
-  "use strict";
-
-  // 检查是否在 iframe 中
-  if (window.self === window.top) {
-    return; // 不在 iframe 中，不执行
-  }
-
-  // 检查是否已经初始化过
-  if (window.__iframeHighlightInitialized) {
-    return;
-  }
-  window.__iframeHighlightInitialized = true;
-  console.log("Iframe 高亮脚本已加载");
-
-  // 创建高亮覆盖层
-  var overlay = document.createElement("div");
-  overlay.id = "iframe-highlight-overlay";
-  overlay.style.cssText = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    pointer-events: none;\n    z-index: 999999;\n    overflow: hidden;\n  ";
-
-  // 创建悬停高亮框（虚线边框）
-  var highlightBox = document.createElement("div");
-  highlightBox.id = "iframe-highlight-box";
-  highlightBox.style.cssText = "\n    position: absolute;\n    border: 2px dashed #007AFF;\n    background: rgba(0, 122, 255, 0.08);\n    pointer-events: none;\n    display: none;\n    transition: all 0.1s ease;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);\n    border-radius: 2px;\n  ";
-
-  // 创建选中节点的常驻高亮框（实线边框）
-  var selectedBox = document.createElement("div");
-  selectedBox.id = "iframe-selected-box";
-  selectedBox.style.cssText = "\n    position: absolute;\n    border: 2px solid #007AFF;\n    pointer-events: none;\n    display: none;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 107, 53, 0.4);\n    border-radius: 2px;\n    z-index: 1000000;\n  ";
-
-  // 创建悬停标签显示
-  var tagLabel = document.createElement("div");
-  tagLabel.id = "iframe-tag-label";
-  tagLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 2px 6px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 2px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000001;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n    font-weight: 500;\n  ";
-
-  // 创建选中节点标签
-  var selectedLabel = document.createElement("div");
-  selectedLabel.id = "iframe-selected-label";
-  selectedLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 3px 8px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 3px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000002;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);\n    font-weight: 600;\n  ";
-  overlay.appendChild(highlightBox);
-  overlay.appendChild(selectedBox);
-  overlay.appendChild(tagLabel);
-  overlay.appendChild(selectedLabel);
-  document.body.appendChild(overlay);
-
-  var selectedElement = null;
-  var highlightEnabled = false;
-
-  function updateSelectedHighlight(element) {
-    console.log("updateSelectedHighlight called with:", element);
-    if (!element) {
-      selectedBox.style.display = "none";
-      selectedLabel.style.display = "none";
-      selectedElement = null;
-      console.log("Cleared selected highlight");
-      return;
-    }
-    selectedElement = element;
-    var rect = element.getBoundingClientRect();
-    console.log("Selected element rect:", rect);
-    selectedBox.style.display = "block";
-    selectedBox.style.left = "".concat(rect.left - 2, "px");
-    selectedBox.style.top = "".concat(rect.top - 2, "px");
-    selectedBox.style.width = "".concat(rect.width + 4, "px");
-    selectedBox.style.height = "".concat(rect.height + 4, "px");
-    selectedLabel.style.display = "block";
-    selectedLabel.textContent = "\u2713 <".concat(element.tagName.toLowerCase(), ">");
-    var labelTop = rect.top - 28;
-    var labelLeft = rect.left;
-    if (labelTop < 5) { labelTop = rect.bottom + 5; }
-    var labelWidth = selectedLabel.offsetWidth || 100;
-    if (labelLeft + labelWidth > window.innerWidth - 10) { labelLeft = window.innerWidth - labelWidth - 10; }
-    selectedLabel.style.left = "".concat(Math.max(5, labelLeft), "px");
-    selectedLabel.style.top = "".concat(labelTop, "px");
-  }
-
-  function getElementSelector(element) {
-    if (!(element instanceof Element)) throw new Error('Argument must be a DOM element');
-    var segments = [];
-    var current = element;
-    while (current !== document.documentElement) {
-      var selector = '';
-      if (current.id && document.querySelectorAll("#".concat(current.id)).length === 1) {
-        segments.unshift("#".concat(current.id));
-        break;
-      }
-      var classes = Array.from(current.classList).filter(function (c) { return !c.startsWith('js-'); });
-      var className = classes.length > 0 ? ".".concat(classes[0]) : '';
-      var tag = current.tagName.toLowerCase();
-      if (!className) {
-        var siblings = Array.from(current.parentNode.children);
-        var index = siblings.findIndex(function (el) { return el === current; }) + 1;
-        selector = "".concat(tag, ":nth-child(").concat(index, ")");
-      } else {
-        selector = className;
-      }
-      segments.unshift(selector);
-      current = current.parentElement;
-    }
-    if (current === document.documentElement) { segments.unshift('html'); }
-    return segments.join(' > ');
-  }
-
-  function getElementText(element) {
-    var _element$textContent;
-    if (element.tagName === "INPUT") { return element.value || element.placeholder || ""; }
-    if (element.tagName === "TEXTAREA") { return element.value || element.placeholder || ""; }
-    var text = ((_element$textContent = element.textContent) === null || _element$textContent === void 0 ? void 0 : _element$textContent.trim()) || "";
-    return text.length > 50 ? text.substring(0, 50) + "..." : text;
-  }
-
-  function getElementAttributes(element) {
-    var attrs = {};
-    for (var i = 0; i < element.attributes.length; i++) {
-      var attr = element.attributes[i];
-      attrs[attr.name] = attr.value;
-    }
-    return attrs;
-  }
-
-  function handleMouseOver(e) {
-    if (!highlightEnabled) return;
-    var target = e.target;
-    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) { return; }
-    if (target === document.documentElement || target === document.body) { return; }
-    if (target === selectedElement) { highlightBox.style.display = "none"; tagLabel.style.display = "none"; return; }
-    var rect = target.getBoundingClientRect();
-    var selector = getElementSelector(target);
-    var text = getElementText(target);
-    var attributes = getElementAttributes(target);
-    highlightBox.style.display = "block";
-    highlightBox.style.left = "".concat(rect.left - 2, "px");
-    highlightBox.style.top = "".concat(rect.top - 2, "px");
-    highlightBox.style.width = "".concat(rect.width + 4, "px");
-    highlightBox.style.height = "".concat(rect.height + 4, "px");
-    tagLabel.style.display = "block";
-    tagLabel.textContent = "<".concat(target.tagName.toLowerCase(), ">");
-    var labelTop = rect.top - 22;
-    var labelLeft = rect.left;
-    if (labelTop < 0) { labelTop = rect.bottom + 5; }
-    if (labelLeft + tagLabel.offsetWidth > window.innerWidth) { labelLeft = window.innerWidth - tagLabel.offsetWidth - 5; }
-    tagLabel.style.left = "".concat(Math.max(0, labelLeft), "px");
-    tagLabel.style.top = "".concat(labelTop, "px");
-    var elementInfo = { tagName: target.tagName.toLowerCase(), rect: { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height, x: rect.x, y: rect.y }, selector: selector, text: text, attributes: attributes, url: window.location.href, path: window.location.pathname, timestamp: Date.now() };
-    try { window.parent.postMessage({ type: "iframe-element-hover", data: elementInfo, source: "iframe-highlight-injector" }, "*"); } catch (error) { console.warn("无法发送消息到父窗口:", error); }
-  }
-
-  function handleMouseOut(e) {
-    if (!highlightEnabled) return;
-    var relatedTarget = e.relatedTarget;
-    if (relatedTarget && (relatedTarget === highlightBox || relatedTarget === tagLabel || relatedTarget === overlay || relatedTarget === selectedBox || relatedTarget === selectedLabel)) { return; }
-    highlightBox.style.display = "none";
-    tagLabel.style.display = "none";
-    try { window.parent.postMessage({ type: "iframe-element-hover", data: null, source: "iframe-highlight-injector" }, "*"); } catch (error) { console.warn("无法发送消息到父窗口:", error); }
-  }
-
-  function handleClick(e) {
-    var target = e.target;
-    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) { return; }
-    if (target === document.documentElement || target === document.body) { return; }
-    if (highlightEnabled) { e.preventDefault(); e.stopPropagation(); }
-    var rect = target.getBoundingClientRect();
-    var selector = getElementSelector(target);
-    var text = getElementText(target);
-    var attributes = getElementAttributes(target);
-    updateSelectedHighlight(target);
-    highlightBox.style.display = "none";
-    tagLabel.style.display = "none";
-    var elementInfo = { tagName: target.tagName.toLowerCase(), rect: { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height, x: rect.x, y: rect.y }, selector: selector, text: text, attributes: attributes, url: window.location.href, path: window.location.pathname, timestamp: Date.now() };
-    try { window.parent.postMessage({ type: "iframe-element-click", data: elementInfo, source: "iframe-highlight-injector" }, "*"); } catch (error) { console.warn("无法发送消息到父窗口:", error); }
-  }
-
-  function handleParentMessage(event) {
-    console.log("Received message from parent:", event.data);
-    if (event.data.type === "iframe-highlight-toggle") {
-      var enabled = event.data.enabled;
-      if (enabled) { enableHighlight(); } else { disableHighlight(); }
-    } else if (event.data.type === "enable-iframe-highlight") {
-      enableHighlight();
-    } else if (event.data.type === "disable-iframe-highlight") {
-      disableHighlight();
-    } else if (event.data.type === "toggle-iframe-highlight") {
-      var _enabled = event.data.enabled !== undefined ? event.data.enabled : !highlightEnabled;
-      if (_enabled) { enableHighlight(); } else { disableHighlight(); }
-    } else if (event.data.type === "update-selected-element") {
-      var selector = event.data.selector;
-      if (selector) {
-        try { var element = document.querySelector(selector); updateSelectedHighlight(element); } catch (error) { console.warn("Failed to select element:", error); updateSelectedHighlight(null); }
-      } else { updateSelectedHighlight(null); }
-    } else if (event.data.type === "clear-selected-element") {
-      updateSelectedHighlight(null);
-    }
-  }
-
-  function enableHighlight() {
-    console.log("Enabling highlight");
-    document.addEventListener("mouseover", handleMouseOver, true);
-    document.addEventListener("mouseout", handleMouseOut, true);
-    document.addEventListener("click", handleClick, true);
-    highlightEnabled = true;
-    overlay.style.display = "block";
-  }
-
-  function disableHighlight() {
-    console.log("Disabling highlight");
-    highlightEnabled = false;
-    highlightBox.style.display = "none";
-    tagLabel.style.display = "none";
-  }
-
-  function fullyDisableHighlight() {
-    console.log("Fully disabling highlight");
-    highlightEnabled = false;
-    document.removeEventListener("mouseover", handleMouseOver, true);
-    document.removeEventListener("mouseout", handleMouseOut, true);
-    document.removeEventListener("click", handleClick, true);
-    overlay.style.display = "none";
-    highlightBox.style.display = "none";
-    tagLabel.style.display = "none";
-    selectedBox.style.display = "none";
-    selectedLabel.style.display = "none";
-  }
-
-  enableHighlight();
-  window.addEventListener("message", handleParentMessage);
-
-  window.__iframeHighlightControl = {
-    enable: enableHighlight,
-    disable: disableHighlight,
-    fullyDisable: fullyDisableHighlight,
-    isEnabled: function isEnabled() { return highlightEnabled; },
-    getSelectedElement: function getSelectedElement() { return selectedElement; },
-    updateSelected: updateSelectedHighlight,
-    sendToggleMessage: function sendToggleMessage(enabled) {
-      window.parent.postMessage({ type: 'iframe-highlight-status', enabled: enabled || highlightEnabled, source: 'iframe-highlight-injector' }, '*');
-    }
-  };
-
-  try {
-    window.parent.postMessage({ type: "iframe-highlight-ready", data: { url: window.location.href, userAgent: navigator.userAgent, timestamp: Date.now() }, source: "iframe-highlight-injector" }, "*");
-  } catch (error) { console.warn("无法发送就绪消息到父窗口:", error); }
-
-  window.__iframeHighlightCleanup = function () {
-    fullyDisableHighlight();
-    window.removeEventListener("message", handleParentMessage);
-    if (overlay.parentElement) { overlay.parentElement.removeChild(overlay); }
-    delete window.__iframeHighlightInitialized;
-    delete window.__iframeHighlightCleanup;
-  };
-})();
-</script>
-
 </body>
 </html>
