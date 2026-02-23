@@ -42,34 +42,48 @@
         }
     </script>
 </head>
-<body class="text-gray-100 overflow-x-hidden bg-dark-900">
+<body class="text-gray-100 overflow-x-hidden bg-dark-900 page-transition">
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+
+    <!-- Ambient Particles Canvas -->
+    <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
     
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float parallax-slow" data-speed="0.02"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: -3s;" data-speed="0.03"></div>
     </div>
 
     <nav class="fixed w-full top-0 z-50 glass shadow-2xl">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-bold font-space flex items-center group">
-                    <i class="fas fa-arrow-left text-gray-400 group-hover:text-purple-400 mr-4 text-lg transition-colors"></i>
-                    <span class="gradient-text">ASLAM Projects</span>
-                </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Back to Profile</a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+            <!-- Desktop: Centered Navigation -->
+            <div class="hidden md:flex justify-center items-center">
+                <div class="flex items-center space-x-6 lg:space-x-10">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white transition-colors text-sm lg:text-base font-medium py-2">Back to Profile</a>
                     <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
                         <i class="fas fa-moon icon-moon"></i>
                         <i class="fas fa-sun icon-sun"></i>
                     </button>
-                    <a href="index.html#contact" class="magnetic-btn px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+                    <a href="index.html#contact" class="magnetic-btn px-5 lg:px-7 py-2.5 lg:py-3 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm lg:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
                         Hire Me
                     </a>
                 </div>
-                <button type="button" id="theme-toggle-mobile" class="theme-toggle md:hidden min-h-[44px] min-w-[44px] ml-2" aria-label="Toggle dark/light mode">
-                    <i class="fas fa-moon icon-moon"></i>
-                    <i class="fas fa-sun icon-sun"></i>
-                </button>
+            </div>
+            
+            <!-- Mobile: Full width centered -->
+            <div class="flex md:hidden justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <button type="button" id="theme-toggle-mobile" class="theme-toggle w-12 h-12 flex items-center justify-center" aria-label="Toggle dark/light mode">
+                        <i class="fas fa-moon icon-moon text-lg"></i>
+                        <i class="fas fa-sun icon-sun text-lg"></i>
+                    </button>
+                </div>
+                <a href="index.html" class="text-white text-lg font-medium flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl active:bg-white/10 transition-colors">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                    Back
+                </a>
             </div>
         </div>
     </nav>
@@ -206,6 +220,189 @@
             backTop.classList.toggle('hidden', window.scrollY <= 300);
         });
         backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Fix for card hover animation - mark cards as animated after initial load
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('animationend', function() {
+                this.classList.add('animate-done');
+            });
+            // Fallback: add class after animation duration (600ms)
+            setTimeout(() => {
+                card.classList.add('animate-done');
+            }, 700);
+        });
+
+        // ========== PREMIUM ANIMATIONS ==========
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+        let cursorX = 0, cursorY = 0;
+        let dotX = 0, dotY = 0;
+
+        if (window.matchMedia('(pointer: fine)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursorX = e.clientX;
+                cursorY = e.clientY;
+            });
+
+            function animateCursor() {
+                dotX += (cursorX - dotX) * 0.15;
+                dotY += (cursorY - dotY) * 0.15;
+                
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                cursorDot.style.left = dotX + 'px';
+                cursorDot.style.top = dotY + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Cursor hover effects
+            const hoverElements = document.querySelectorAll('a, button, .premium-card, video');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+            });
+
+            document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+            document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+        }
+
+        // Ambient Particles
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.hue = Math.random() * 60 + 240;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 25; i++) {
+            particles.push(new Particle());
+        }
+
+        let frameCount = 0;
+        function animateParticles() {
+            frameCount++;
+            if (frameCount % 2 === 0) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                
+                particles.forEach((p1, i) => {
+                    particles.slice(i + 1).forEach(p2 => {
+                        const dx = p1.x - p2.x;
+                        const dy = p1.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(139, 92, 246, ${0.1 * (1 - dist / 100)})`;
+                            ctx.stroke();
+                        }
+                    });
+                });
+            }
+            animationId = requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                cancelAnimationFrame(animationId);
+            } else {
+                animateParticles();
+            }
+        });
+
+        // Parallax Effect
+        function throttle(fn, wait) {
+            let last = 0;
+            return function(...args) {
+                const now = Date.now();
+                if (now - last >= wait) {
+                    last = now;
+                    fn.apply(this, args);
+                }
+            };
+        }
+
+        const parallaxElements = document.querySelectorAll('.parallax-slow, .parallax-medium, .parallax-fast');
+        window.addEventListener('scroll', throttle(() => {
+            const scrolled = window.scrollY;
+            parallaxElements.forEach(el => {
+                const speed = parseFloat(el.dataset.speed) || 0.05;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        }, 16));
+
+        // Section Reveal
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('section-reveal');
+            sectionObserver.observe(section);
+        });
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
     </script>
 </body>
 </html>

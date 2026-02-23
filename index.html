@@ -233,73 +233,82 @@
         }
     </script>
 </head>
-<body class="text-gray-100 overflow-x-hidden">
+<body class="text-gray-100 overflow-x-hidden page-transition">
 
     <!-- Theme: set on <html> via script; time-based (6 AM–7 PM = light) if no saved preference -->
 
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+
+    <!-- Ambient Particles Canvas -->
+    <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
+
     <!-- Background Blobs -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: -3s;"></div>
-        <div class="absolute top-3/4 left-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl float" style="animation-delay: -1.5s;"></div>
-        <div class="absolute top-1/2 right-1/4 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl float" style="animation-delay: -5s;"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl float parallax-slow" data-speed="0.02"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: -3s;" data-speed="0.03"></div>
+        <div class="absolute top-3/4 left-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl float" style="animation-delay: -1.5s;" data-speed="0.04"></div>
+        <div class="absolute top-1/2 right-1/4 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl float" style="animation-delay: -5s;" data-speed="0.025"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full top-0 z-50 glass transition-shadow duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-            <div class="flex justify-between items-center">
-                <a href="#home" class="text-xl sm:text-2xl font-bold font-space" aria-label="Home">
-                    <span class="gradient-text">ASLAM</span>
-                </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Home</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">About</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Skills</a>
-                    <a href="#experience" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Experience</a>
-                    <a href="#education" class="nav-link text-gray-300 hover:text-white transition-colors text-sm font-medium">Education</a>
-                    <a href="projects.html" class="nav-link text-purple-400 hover:text-purple-300 transition-colors text-sm font-bold">Project Videos</a>
-                    <button type="button" id="theme-toggle" class="theme-toggle ml-2" aria-label="Toggle dark/light mode" title="Toggle theme">
+            <!-- Desktop: Centered Navigation -->
+            <div class="hidden md:flex justify-center items-center">
+                <div class="flex items-center space-x-6 lg:space-x-10">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors text-sm lg:text-base font-medium py-2">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors text-sm lg:text-base font-medium py-2">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors text-sm lg:text-base font-medium py-2">Skills</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-white transition-colors text-sm lg:text-base font-medium py-2">Experience</a>
+                    <a href="#education" class="nav-link text-gray-300 hover:text-white transition-colors text-sm lg:text-base font-medium py-2">Education</a>
+                    <a href="projects.html" class="nav-link text-purple-400 hover:text-purple-300 transition-colors text-sm lg:text-base font-bold py-2">Projects</a>
+                    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
                         <i class="fas fa-moon icon-moon"></i>
                         <i class="fas fa-sun icon-sun"></i>
                     </button>
-                    <a href="#contact" class="magnetic-btn px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
-                        Contact Me
+                    <a href="#contact" class="magnetic-btn px-5 lg:px-7 py-2.5 lg:py-3 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm lg:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+                        Contact
                     </a>
                 </div>
-                <div class="flex items-center gap-2 md:gap-3">
-                    <button type="button" id="theme-toggle-mobile" class="theme-toggle md:hidden min-h-[44px] min-w-[44px]" aria-label="Toggle dark/light mode">
-                        <i class="fas fa-moon icon-moon"></i>
-                        <i class="fas fa-sun icon-sun"></i>
+            </div>
+            
+            <!-- Mobile: Full width centered -->
+            <div class="flex md:hidden justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <button type="button" id="theme-toggle-mobile" class="theme-toggle w-12 h-12 flex items-center justify-center" aria-label="Toggle dark/light mode">
+                        <i class="fas fa-moon icon-moon text-lg"></i>
+                        <i class="fas fa-sun icon-sun text-lg"></i>
                     </button>
-                    <button id="mobile-btn" class="md:hidden text-white text-xl p-2 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Toggle menu" aria-expanded="false">
+                </div>
+                <button id="mobile-btn" class="text-white text-2xl w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl active:bg-white/10 transition-colors" aria-label="Toggle menu" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
-                <div class="flex flex-col space-y-1">
-                    <a href="#home" class="text-gray-300 hover:text-white transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-base">Home</a>
-                    <a href="#about" class="text-gray-300 hover:text-white transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-base">About</a>
-                    <a href="#skills" class="text-gray-300 hover:text-white transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-base">Skills</a>
-                    <a href="#experience" class="text-gray-300 hover:text-white transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-base">Experience</a>
-                    <a href="#education" class="text-gray-300 hover:text-white transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-base">Education</a>
-                    <a href="projects.html" class="text-purple-400 hover:text-purple-300 font-bold transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-base">Project Videos</a>
-                    <div class="flex justify-center py-2">
-                        <button type="button" id="theme-toggle-mobile-menu" class="theme-toggle" aria-label="Toggle dark/light mode"> <i class="fas fa-moon icon-moon"></i> <i class="fas fa-sun icon-sun"></i> </button>
-                    </div>
-                    <a href="#contact" class="mt-2 text-center py-3 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold text-base">Contact Me</a>
+            
+            <!-- Mobile Menu - Full Screen Overlay -->
+            <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-[72px] z-40 bg-dark-900/98 backdrop-blur-xl">
+                <div class="flex flex-col items-center justify-center h-full gap-6 p-6">
+                    <a href="#home" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Home</a>
+                    <a href="#about" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">About</a>
+                    <a href="#skills" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Skills</a>
+                    <a href="#experience" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Experience</a>
+                    <a href="#education" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Education</a>
+                    <a href="projects.html" class="mobile-nav-link text-2xl font-bold text-purple-400 hover:text-purple-300 transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Projects</a>
+                    <a href="#contact" class="mt-4 text-center py-4 px-8 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-xl w-full max-w-xs">Contact Me</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen hero-gradient relative flex items-center pt-20 noise">
+    <section id="home" class="min-h-screen hero-gradient relative flex items-center pt-20 noise noise-premium">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16 md:py-20 w-full">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                 
                 <!-- Text Content -->
-                <div class="order-2 lg:order-1 reveal">
+                <div class="order-2 lg:order-1 reveal parallax-medium" data-speed="0.03">
                     <div class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass mb-4 sm:mb-6">
                         <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
                         <span class="text-xs sm:text-sm text-gray-400">Available for Freelance Projects</span>
@@ -318,13 +327,13 @@
                         in building modern websites, custom software, and advanced macOS hardware configurations.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                        <a href="#contact" class="magnetic-btn group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold overflow-hidden text-center text-sm sm:text-base">
+                        <a href="#contact" class="magnetic-btn magnetic-btn-premium group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-semibold overflow-hidden text-center text-sm sm:text-base glow-premium">
                             <span class="relative z-10 flex items-center justify-center">
                                 Let's Talk
                                 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </span>
                         </a>
-                        <a href="projects.html" class="magnetic-btn px-6 sm:px-8 py-3 sm:py-4 rounded-full glass hover:bg-white/10 font-semibold transition-all text-purple-300 text-center text-sm sm:text-base">
+                        <a href="projects.html" class="magnetic-btn magnetic-btn-premium px-6 sm:px-8 py-3 sm:py-4 rounded-full glass hover:bg-white/10 font-semibold transition-all text-purple-300 text-center text-sm sm:text-base">
                             Watch Project Videos
                         </a>
                     </div>
@@ -534,12 +543,12 @@
                         Technical Skills
                     </h3>
                     <div class="space-y-3 sm:space-y-4 md:space-y-6">
-                        <div class="glass rounded-xl p-3 sm:p-4 md:p-5 border border-purple-500/30">
+                        <div class="premium-card glass rounded-xl p-3 sm:p-4 md:p-5 border border-purple-500/30 glow-premium">
                             <div class="flex justify-between mb-2 sm:mb-3">
                                 <span class="font-medium text-white text-xs sm:text-sm md:text-base">Generative AI & Prompt Engineering</span>
                                 <span class="text-purple-400 font-semibold text-xs sm:text-sm">95%</span>
                             </div>
-                            <div class="h-1.5 sm:h-2 bg-dark-600 rounded-full overflow-hidden">
+                            <div class="h-1.5 sm:h-2 bg-dark-600 rounded-full overflow-hidden skill-bar-premium">
                                 <div class="skill-progress h-full" style="width: 95%"></div>
                             </div>
                         </div>
@@ -1095,22 +1104,22 @@
                     </div>
 
                     <div class="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8 md:mt-10">
-                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700/50 transition-all" aria-label="GitHub">
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700/50 transition-all icon-hover-pop glow-premium" aria-label="GitHub">
                             <i class="fab fa-github text-base sm:text-lg"></i>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=100079662132233" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600/20 transition-all" aria-label="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100079662132233" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600/20 transition-all icon-hover-pop glow-premium" aria-label="Facebook">
                             <i class="fab fa-facebook-f text-base sm:text-lg"></i>
                         </a>
-                        <a href="https://www.instagram.com/_aslamshar_?igsh=aXF2Y3J4YTV1ZGpm" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-500/20 transition-all" aria-label="Instagram">
+                        <a href="https://www.instagram.com/_aslamshar_?igsh=aXF2Y3J4YTV1ZGpm" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-500/20 transition-all icon-hover-pop glow-premium" aria-label="Instagram">
                             <i class="fab fa-instagram text-base sm:text-lg"></i>
                         </a>
-                        <a href="https://youtube.com/@unlockeyy6372" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-500/20 transition-all" aria-label="YouTube">
+                        <a href="https://youtube.com/@unlockeyy6372" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-500/20 transition-all icon-hover-pop glow-premium" aria-label="YouTube">
                             <i class="fab fa-youtube text-base sm:text-lg"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/aslam-mulaffer-0a05b5354" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/20 transition-all" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/aslam-mulaffer-0a05b5354" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/20 transition-all icon-hover-pop glow-premium" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in text-base sm:text-lg"></i>
                         </a>
-                        <a href="https://x.com/AslamMulaffer" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-500/20 transition-all" aria-label="X Twitter">
+                        <a href="https://x.com/AslamMulaffer" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-500/20 transition-all icon-hover-pop glow-premium" aria-label="X Twitter">
                             <i class="fa-brands fa-x-twitter text-base sm:text-lg"></i>
                         </a>
                     </div>
@@ -1199,6 +1208,8 @@
             mobileMenu.classList.toggle('hidden');
             mobileBtn.setAttribute('aria-expanded', isHidden);
             menuIcon.className = isHidden ? 'fas fa-times' : 'fas fa-bars';
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isHidden ? 'hidden' : '';
         });
 
         mobileMenu.querySelectorAll('a').forEach(link => {
@@ -1206,6 +1217,7 @@
                 mobileMenu.classList.add('hidden');
                 mobileBtn.setAttribute('aria-expanded', 'false');
                 menuIcon.className = 'fas fa-bars';
+                document.body.style.overflow = '';
             });
         });
 
@@ -1259,6 +1271,261 @@
                 menuIcon.className = 'fas fa-bars';
             }
         }, 250));
+
+        // Fix for card hover animation - mark cards as animated after initial load
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('animationend', function() {
+                this.classList.add('animate-done');
+            });
+            // Fallback: add class after animation duration (600ms)
+            setTimeout(() => {
+                card.classList.add('animate-done');
+            }, 700);
+        });
+
+        // ========== PREMIUM ANIMATIONS ==========
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+        let cursorX = 0, cursorY = 0;
+        let dotX = 0, dotY = 0;
+
+        if (window.matchMedia('(pointer: fine)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursorX = e.clientX;
+                cursorY = e.clientY;
+            });
+
+            function animateCursor() {
+                dotX += (cursorX - dotX) * 0.15;
+                dotY += (cursorY - dotY) * 0.15;
+                
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                cursorDot.style.left = dotX + 'px';
+                cursorDot.style.top = dotY + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Cursor hover effects
+            const hoverElements = document.querySelectorAll('a, button, .premium-card, .magnetic-btn, input, textarea');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+            });
+
+            document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+            document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+        }
+
+        // Ambient Particles
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.hue = Math.random() * 60 + 240; // Purple to cyan range
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        // Create particles (limited for performance)
+        for (let i = 0; i < 30; i++) {
+            particles.push(new Particle());
+        }
+
+        let frameCount = 0;
+        function animateParticles() {
+            frameCount++;
+            if (frameCount % 2 === 0) { // Render every 2nd frame for performance
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                
+                // Draw connections
+                particles.forEach((p1, i) => {
+                    particles.slice(i + 1).forEach(p2 => {
+                        const dx = p1.x - p2.x;
+                        const dy = p1.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(139, 92, 246, ${0.1 * (1 - dist / 100)})`;
+                            ctx.stroke();
+                        }
+                    });
+                });
+            }
+            animationId = requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Pause particles when tab is hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                cancelAnimationFrame(animationId);
+            } else {
+                animateParticles();
+            }
+        });
+
+        // Parallax Effect
+        const parallaxElements = document.querySelectorAll('.parallax-slow, .parallax-medium, .parallax-fast');
+        window.addEventListener('scroll', throttle(() => {
+            const scrolled = window.scrollY;
+            parallaxElements.forEach(el => {
+                const speed = parseFloat(el.dataset.speed) || 0.05;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        }, 16));
+
+        // Enhanced Section Reveal with Intersection Observer
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill bars when in view
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach((bar, index) => {
+                        setTimeout(() => {
+                            bar.style.animation = 'none';
+                            bar.offsetHeight; // Trigger reflow
+                            bar.style.animation = 'skill-shimmer 2s infinite';
+                        }, index * 100);
+                    });
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('section-reveal');
+            sectionObserver.observe(section);
+        });
+
+        // Text Reveal Animation - Line based for better readability
+        const textRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('h1, h2').forEach((heading, headingIndex) => {
+            heading.classList.add('text-reveal');
+            // Wrap the entire heading content in a single animated span
+            const originalContent = heading.innerHTML;
+            heading.innerHTML = `<span style="transition-delay: ${headingIndex * 200}ms; display: inline-block">${originalContent}</span>`;
+            textRevealObserver.observe(heading);
+        });
+
+        // Magnetic Button Effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Icon Pop Animation on Scroll
+        const iconObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.fab, .fas').forEach(icon => {
+            iconObserver.observe(icon);
+        });
+
+        // Smooth scroll for anchor links with offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add popIn keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes popIn {
+                0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+                70% { transform: scale(1.2) rotate(10deg); }
+                100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
