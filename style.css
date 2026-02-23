@@ -224,11 +224,11 @@ body {
     pointer-events: none;
 }
 
-/* Magnetic Button */
+/* Magnetic Button – single smooth transition, no jitter */
 .magnetic-btn {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.magnetic-btn:hover { transform: scale(1.05); }
+.magnetic-btn:hover { transform: scale(1.03); }
 .magnetic-btn:active { transform: scale(0.98); }
 
 /* ========== LIGHT THEME OVERRIDES (Tailwind text/border/background) ========== */
@@ -288,7 +288,7 @@ body {
 .premium-card { animation: scale-in 0.6s ease backwards; }
 .premium-card:hover { animation: none; }
 .premium-card:hover { border-color: var(--card-hover-border) !important; box-shadow: 0 25px 50px -12px var(--card-hover-shadow); }
-.float { animation: float 6s ease-in-out infinite, float-slow 8s ease-in-out infinite; }
+.float { animation: float 6s ease-in-out infinite; }
 
 /* Gradient text animation (optional extra shine) */
 .gradient-text {
@@ -296,7 +296,7 @@ body {
     animation: shimmer-text 6s linear infinite;
 }
 
-/* Theme toggle button */
+/* Theme toggle button – snappy, no repeated animation feel */
 .theme-toggle {
     width: 44px;
     height: 44px;
@@ -308,16 +308,18 @@ body {
     border: 1px solid var(--glass-border);
     color: var(--text-primary);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transform: scale(1);
 }
 .theme-toggle:hover {
     background: var(--glass-strong-bg);
-    transform: rotate(15deg) scale(1.05);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    transform: scale(1.08);
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.15);
 }
+.theme-toggle:active { transform: scale(0.96); }
 .theme-toggle:focus { outline: none; }
 .theme-toggle .icon-sun,
-.theme-toggle .icon-moon { transition: transform 0.3s ease, opacity 0.3s ease; }
+.theme-toggle .icon-moon { transition: none; }
 .theme-toggle .icon-moon { display: none; }
 .theme-toggle .icon-sun { display: inline-block; }
 [data-theme="light"] .theme-toggle .icon-moon { display: inline-block; }
@@ -347,5 +349,12 @@ body {
 
 /* Subtle button glow on hover */
 .magnetic-btn:hover {
-    box-shadow: 0 0 25px rgba(139, 92, 246, 0.35), 0 0 50px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.25), 0 0 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Profile image – sharp rendering (no 3D translateZ to avoid blur) */
+.hero-profile-img {
+    image-rendering: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
