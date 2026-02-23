@@ -60,91 +60,118 @@
             z-index: 50;
         }
 
-        /* ---- Screens 430px and below (iPhone 14 Pro Max, etc) ---- */
-        @media (max-width: 430px) {
+        /* ---- Mobile: Layout with visible badges ---- */
+        @media (max-width: 767px) {
             .hero-profile-wrapper {
-                width: 220px;
-                height: 310px;
+                width: 280px;
+                height: 400px;
+                margin: 0 auto;
+            }
+            
+            /* Larger visible badges for mobile */
+            .floating-badge {
+                transform: scale(0.7);
+                padding: 0.75rem;
+            }
+            
+            .badge-top-left { 
+                top: 20px; 
+                left: -70px; 
+                transform-origin: center; 
+                transform: scale(0.7); 
+            }
+            .badge-top-right { 
+                top: 20px; 
+                right: -70px; 
+                transform-origin: center; 
+                transform: scale(0.7); 
+            }
+            .badge-bot-right { 
+                bottom: 20px; 
+                right: -70px; 
+                transform-origin: center; 
+                transform: scale(0.7); 
+            }
+            .badge-bot-left { 
+                bottom: 20px; 
+                left: -70px; 
+                transform-origin: center; 
+                transform: scale(0.7); 
+            }
+
+            /* Orbit rings */
+            .orbit-ring-outer { 
+                inset: -15%; 
+                border-width: 2px;
+            }
+            .orbit-ring-inner { 
+                inset: -8%; 
+                border-width: 2px;
+            }
+
+            /* Profile image sizing */
+            .hero-profile-img {
+                width: 450px;
+                max-width: none;
+            }
+        }
+
+        /* ---- Small phones ---- */
+        @media (max-width: 375px) {
+            .hero-profile-wrapper {
+                width: 240px;
+                height: 350px;
+            }
+            
+            .floating-badge {
+                transform: scale(0.6);
+            }
+            
+            .badge-top-left { 
+                top: 15px;
+                left: -60px; 
+                transform: scale(0.6); 
+            }
+            .badge-top-right { 
+                top: 15px;
+                right: -60px; 
+                transform: scale(0.6); 
+            }
+            .badge-bot-right { 
+                bottom: 15px;
+                right: -60px; 
+                transform: scale(0.6); 
+            }
+            .badge-bot-left { 
+                bottom: 15px;
+                left: -60px; 
+                transform: scale(0.6); 
+            }
+            
+            .hero-profile-img {
+                width: 380px;
+            }
+        }
+
+        /* ---- Tablets 768px - 1023px ---- */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .hero-profile-wrapper {
+                width: 280px;
+                height: 420px;
             }
             .floating-badge {
-                transform: scale(0.52);
+                transform: scale(0.7);
             }
-            .badge-top-left   { top: -30px; left: -40px; transform-origin: top left; transform: scale(0.52); }
-            .badge-top-right  { top: 18%; right: -45px; transform-origin: top right; transform: scale(0.52); }
-            .badge-bot-right  { bottom: -30px; right: -40px; transform-origin: bottom right; transform: scale(0.52); }
-            .badge-bot-left   { bottom: 18%; left: -45px; transform-origin: bottom left; transform: scale(0.52); }
+            .badge-top-left   { top: 10px; left: -50px; transform-origin: center; transform: scale(0.7); }
+            .badge-top-right  { top: 10px; right: -50px; transform-origin: center; transform: scale(0.7); }
+            .badge-bot-right  { bottom: 10px; right: -50px; transform-origin: center; transform: scale(0.7); }
+            .badge-bot-left   { bottom: 10px; left: -50px; transform-origin: center; transform: scale(0.7); }
 
             .orbit-ring-outer { inset: -20%; }
             .orbit-ring-inner { inset: -10%; }
 
             .hero-profile-img {
-                width: 450px;
-            }
-        }
-
-        /* ---- Screens 431px - 639px (Large phones) ---- */
-        @media (min-width: 431px) and (max-width: 639px) {
-            .hero-profile-wrapper {
-                width: 260px;
-                height: 370px;
-            }
-            .floating-badge {
-                transform: scale(0.62);
-            }
-            .badge-top-left   { top: -25px; left: -35px; transform-origin: top left; transform: scale(0.62); }
-            .badge-top-right  { top: 20%; right: -40px; transform-origin: top right; transform: scale(0.62); }
-            .badge-bot-right  { bottom: -25px; right: -35px; transform-origin: bottom right; transform: scale(0.62); }
-            .badge-bot-left   { bottom: 20%; left: -40px; transform-origin: bottom left; transform: scale(0.62); }
-
-            .orbit-ring-outer { inset: -25%; }
-            .orbit-ring-inner { inset: -12%; }
-
-            .hero-profile-img {
-                width: 550px;
-            }
-        }
-
-        /* ---- Screens 640px - 767px (Small tablets) ---- */
-        @media (min-width: 640px) and (max-width: 767px) {
-            .hero-profile-wrapper {
-                width: 280px;
-                height: 400px;
-            }
-            .floating-badge {
-                transform: scale(0.72);
-            }
-            .badge-top-left   { top: -20px; left: -40px; transform-origin: top left; transform: scale(0.72); }
-            .badge-top-right  { top: 22%; right: -45px; transform-origin: top right; transform: scale(0.72); }
-            .badge-bot-right  { bottom: -20px; right: -40px; transform-origin: bottom right; transform: scale(0.72); }
-            .badge-bot-left   { bottom: 22%; left: -45px; transform-origin: bottom left; transform: scale(0.72); }
-
-            .orbit-ring-outer { inset: -30%; }
-            .orbit-ring-inner { inset: -15%; }
-
-            .hero-profile-img {
-                width: 650px;
-            }
-        }
-
-        /* ---- Screens 768px - 1023px (Tablets) ---- */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .hero-profile-wrapper {
-                width: 300px;
-                height: 440px;
-            }
-            .floating-badge {
-                transform: scale(0.82);
-            }
-            .badge-top-left   { top: -15px; left: -45px; transform-origin: top left; transform: scale(0.82); }
-            .badge-top-right  { top: 22%; right: -50px; transform-origin: top right; transform: scale(0.82); }
-            .badge-bot-right  { bottom: -15px; right: -45px; transform-origin: bottom right; transform: scale(0.82); }
-            .badge-bot-left   { bottom: 22%; left: -50px; transform-origin: bottom left; transform: scale(0.82); }
-
-            .orbit-ring-outer { inset: -35%; }
-            .orbit-ring-inner { inset: -18%; }
-
-            .hero-profile-img {
-                width: 800px;
+                width: 600px;
             }
         }
 
@@ -274,30 +301,27 @@
                 </div>
             </div>
             
-            <!-- Mobile: Full width centered -->
-            <div class="flex md:hidden justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <button type="button" id="theme-toggle-mobile" class="theme-toggle w-12 h-12 flex items-center justify-center" aria-label="Toggle dark/light mode">
-                        <i class="fas fa-moon icon-moon text-lg"></i>
-                        <i class="fas fa-sun icon-sun text-lg"></i>
-                    </button>
-                </div>
-                <button id="mobile-btn" class="text-white text-2xl w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl active:bg-white/10 transition-colors" aria-label="Toggle menu" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
+            <!-- Mobile: Simple buttons -->
+            <div class="flex md:hidden items-center gap-2">
+                <button id="theme-toggle-mobile" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center">
+                    <i class="fas fa-moon text-sm"></i>
+                </button>
+                <button id="mobile-btn" class="w-9 h-9 rounded-lg bg-purple-600 flex items-center justify-center">
+                    <i class="fas fa-bars text-sm" id="menu-icon"></i>
                 </button>
             </div>
-            
-            <!-- Mobile Menu - Full Screen Overlay -->
-            <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-[72px] z-40 bg-dark-900/98 backdrop-blur-xl">
-                <div class="flex flex-col items-center justify-center h-full gap-6 p-6">
-                    <a href="#home" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Home</a>
-                    <a href="#about" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">About</a>
-                    <a href="#skills" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Skills</a>
-                    <a href="#experience" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Experience</a>
-                    <a href="#education" class="mobile-nav-link text-2xl font-medium text-gray-300 hover:text-white transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Education</a>
-                    <a href="projects.html" class="mobile-nav-link text-2xl font-bold text-purple-400 hover:text-purple-300 transition-all py-3 px-6 rounded-2xl hover:bg-white/5 w-full text-center">Projects</a>
-                    <a href="#contact" class="mt-4 text-center py-4 px-8 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-xl w-full max-w-xs">Contact Me</a>
-                </div>
+        </div>
+        
+        <!-- Mobile Menu - Outside nav container -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-dark-800 border-t border-white/10">
+            <div class="flex flex-col p-3 gap-1">
+                <a href="#home" class="mobile-link py-3 px-4 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg text-center">Home</a>
+                <a href="#about" class="mobile-link py-3 px-4 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg text-center">About</a>
+                <a href="#skills" class="mobile-link py-3 px-4 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg text-center">Skills</a>
+                <a href="#experience" class="mobile-link py-3 px-4 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg text-center">Experience</a>
+                <a href="#education" class="mobile-link py-3 px-4 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg text-center">Education</a>
+                <a href="projects.html" class="mobile-link py-3 px-4 text-base text-purple-400 font-semibold hover:bg-white/5 rounded-lg text-center">Projects</a>
+                <a href="#contact" class="mt-2 py-3 px-4 text-base text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-center font-medium">Contact Me</a>
             </div>
         </div>
     </nav>
@@ -1186,9 +1210,9 @@
         const backTop = document.getElementById('back-top');
         const nav = document.querySelector('nav');
         const reveals = document.querySelectorAll('.reveal');
-        const menuIcon = mobileBtn.querySelector('i');
+        const menuIcon = document.getElementById('menu-icon');
 
-        // Theme: time-based on first visit (6 AM–7 PM = light), then localStorage
+        // Theme toggle
         function getTheme() { return document.documentElement.getAttribute('data-theme') || 'dark'; }
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
@@ -1198,28 +1222,46 @@
             var next = getTheme() === 'dark' ? 'light' : 'dark';
             setTheme(next);
         }
-        [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile'), document.getElementById('theme-toggle-mobile-menu')].forEach(function(btn) {
-            if (btn) btn.addEventListener('click', toggleTheme);
-        });
+        
+        // Desktop theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+        
+        // Mobile theme toggle
+        const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+        if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
 
-        // Mobile Menu
-        mobileBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            mobileMenu.classList.toggle('hidden');
-            mobileBtn.setAttribute('aria-expanded', isHidden);
-            menuIcon.className = isHidden ? 'fas fa-times' : 'fas fa-bars';
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isHidden ? 'hidden' : '';
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileBtn.setAttribute('aria-expanded', 'false');
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
+        // Mobile Menu Toggle
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = mobileMenu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    if (menuIcon) menuIcon.className = 'fas fa-times text-sm';
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    if (menuIcon) menuIcon.className = 'fas fa-bars text-sm';
+                }
             });
-        });
+
+            // Close menu when clicking links
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    if (menuIcon) menuIcon.className = 'fas fa-bars text-sm';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    if (menuIcon) menuIcon.className = 'fas fa-bars text-sm';
+                }
+            });
+        }
 
         // Throttle
         function throttle(fn, wait) {
@@ -1283,15 +1325,19 @@
             }, 700);
         });
 
-        // ========== PREMIUM ANIMATIONS ==========
+        // ========== PREMIUM ANIMATIONS (Mobile Optimized) ==========
+        
+        // Check if mobile device
+        const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
 
-        // Custom Cursor
+        // Custom Cursor - Desktop only
         const cursor = document.getElementById('cursor');
         const cursorDot = document.getElementById('cursor-dot');
-        let cursorX = 0, cursorY = 0;
-        let dotX = 0, dotY = 0;
-
-        if (window.matchMedia('(pointer: fine)').matches) {
+        
+        if (!isMobile && window.matchMedia('(pointer: fine)').matches) {
+            let cursorX = 0, cursorY = 0;
+            let dotX = 0, dotY = 0;
+            
             document.addEventListener('mousemove', (e) => {
                 cursorX = e.clientX;
                 cursorY = e.clientY;
@@ -1310,7 +1356,6 @@
             }
             animateCursor();
 
-            // Cursor hover effects
             const hoverElements = document.querySelectorAll('a, button, .premium-card, .magnetic-btn, input, textarea');
             hoverElements.forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
@@ -1319,128 +1364,117 @@
 
             document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
             document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+        } else {
+            // Hide cursor elements on mobile
+            if (cursor) cursor.style.display = 'none';
+            if (cursorDot) cursorDot.style.display = 'none';
         }
 
-        // Ambient Particles
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let animationId;
+        // Ambient Particles - Desktop only, disabled on mobile
+        if (!isMobile) {
+            const canvas = document.getElementById('particles-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                let animationId;
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.5 + 0.1;
-                this.hue = Math.random() * 60 + 240; // Purple to cyan range
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.reset();
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
                 }
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
 
-        // Create particles (limited for performance)
-        for (let i = 0; i < 30; i++) {
-            particles.push(new Particle());
-        }
-
-        let frameCount = 0;
-        function animateParticles() {
-            frameCount++;
-            if (frameCount % 2 === 0) { // Render every 2nd frame for performance
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
-                
-                // Draw connections
-                particles.forEach((p1, i) => {
-                    particles.slice(i + 1).forEach(p2 => {
-                        const dx = p1.x - p2.x;
-                        const dy = p1.y - p2.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 100) {
-                            ctx.beginPath();
-                            ctx.moveTo(p1.x, p1.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(139, 92, 246, ${0.1 * (1 - dist / 100)})`;
-                            ctx.stroke();
+                class Particle {
+                    constructor() {
+                        this.reset();
+                    }
+                    reset() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.size = Math.random() * 2 + 0.5;
+                        this.speedX = (Math.random() - 0.5) * 0.5;
+                        this.speedY = (Math.random() - 0.5) * 0.5;
+                        this.opacity = Math.random() * 0.5 + 0.1;
+                        this.hue = Math.random() * 60 + 240;
+                    }
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                            this.reset();
                         }
-                    });
+                    }
+                    draw() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
+                        ctx.fill();
+                    }
+                }
+
+                for (let i = 0; i < 20; i++) {
+                    particles.push(new Particle());
+                }
+
+                let frameCount = 0;
+                function animateParticles() {
+                    frameCount++;
+                    if (frameCount % 3 === 0) {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        particles.forEach(p => {
+                            p.update();
+                            p.draw();
+                        });
+                    }
+                    animationId = requestAnimationFrame(animateParticles);
+                }
+                animateParticles();
+
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        cancelAnimationFrame(animationId);
+                    } else {
+                        animateParticles();
+                    }
                 });
             }
-            animationId = requestAnimationFrame(animateParticles);
+        } else {
+            // Hide canvas on mobile
+            const canvas = document.getElementById('particles-canvas');
+            if (canvas) canvas.style.display = 'none';
         }
-        animateParticles();
 
-        // Pause particles when tab is hidden
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                cancelAnimationFrame(animationId);
-            } else {
-                animateParticles();
-            }
-        });
+        // Simple fade-in reveal for mobile, parallax for desktop
+        if (!isMobile) {
+            const parallaxElements = document.querySelectorAll('.parallax-slow, .parallax-medium, .parallax-fast');
+            window.addEventListener('scroll', throttle(() => {
+                const scrolled = window.scrollY;
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.dataset.speed) || 0.05;
+                    el.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            }, 16));
+        }
 
-        // Parallax Effect
-        const parallaxElements = document.querySelectorAll('.parallax-slow, .parallax-medium, .parallax-fast');
-        window.addEventListener('scroll', throttle(() => {
-            const scrolled = window.scrollY;
-            parallaxElements.forEach(el => {
-                const speed = parseFloat(el.dataset.speed) || 0.05;
-                el.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        }, 16));
-
-        // Enhanced Section Reveal with Intersection Observer
+        // Simple section reveal
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Animate skill bars when in view
-                    const skillBars = entry.target.querySelectorAll('.skill-progress');
-                    skillBars.forEach((bar, index) => {
-                        setTimeout(() => {
-                            bar.style.animation = 'none';
-                            bar.offsetHeight; // Trigger reflow
-                            bar.style.animation = 'skill-shimmer 2s infinite';
-                        }, index * 100);
-                    });
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('section').forEach(section => {
-            section.classList.add('section-reveal');
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             sectionObserver.observe(section);
         });
 
-        // Text Reveal Animation - Line based for better readability
+        // Simple text reveal
         const textRevealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1457,48 +1491,37 @@
             textRevealObserver.observe(heading);
         });
 
-        // Magnetic Button Effect
-        document.querySelectorAll('.magnetic-btn').forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+        // Magnetic Button Effect - Desktop only
+        if (!isMobile) {
+            document.querySelectorAll('.magnetic-btn').forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = '';
+                });
             });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = '';
-            });
-        });
 
-        // 3D Card Tilt Effect
-        document.querySelectorAll('.premium-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            // 3D Card Tilt Effect - Desktop only
+            document.querySelectorAll('.premium-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
             });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
-
-        // Icon Pop Animation on Scroll
-        const iconObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-                }
-            });
-        });
-
-        document.querySelectorAll('.fab, .fas').forEach(icon => {
-            iconObserver.observe(icon);
-        });
+        }
 
         // Smooth scroll for anchor links with offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
