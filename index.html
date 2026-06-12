@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Mohamed Aslam Mulaffer - Freelance Software Developer specializing in Web Apps, Custom Hardware Solutions & macOS Installs based in Colombo, Sri Lanka.">
+    <meta name="keywords" content="Software Developer, Web Development, macOS Install, Hackintosh, Hardware Repair, Sri Lanka, Colombo">
+    <meta name="author" content="Mohamed Aslam Mulaffer">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aslam-mulaffer.netlify.app/">
+    <meta property="og:title" content="Mohamed Aslam Mulaffer | IT Professional">
+    <meta property="og:description" content="Freelance Software Developer & IT Professional based in Colombo, Sri Lanka">
+    <meta property="og:image" content="https://ui-avatars.com/api/?name=MA&size=1200&background=8b5cf6&color=fff&bold=true">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aslam-mulaffer.netlify.app/">
+    <meta property="twitter:title" content="Mohamed Aslam Mulaffer | IT Professional">
+    <meta property="twitter:description" content="Freelance Software Developer & IT Professional based in Colombo, Sri Lanka">
+    <meta property="twitter:image" content="https://ui-avatars.com/api/?name=MA&size=1200&background=8b5cf6&color=fff&bold=true">
+
+    <title>Mohamed Aslam Mulaffer | IT Professional</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" as="style">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN for demo, use build process for production) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* ===== CRITICAL CSS - INLINED FOR PERFORMANCE ===== */
+        
+        :root {
+            --color-dark: #0a0a0f;
+            --color-dark-700: #1a1a24;
+            --color-purple: #8b5cf6;
+            --color-blue: #3b82f6;
+            --color-cyan: #06b6d4;
+            --color-pink: #ec4899;
+            --color-text: #e5e7eb;
+            --color-text-muted: #9ca3af;
+            
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            
+            --transition-fast: 0.2s;
+            --transition-normal: 0.4s;
+        }
+
+        /* Dark theme (default) */
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-glass: rgba(26, 26, 36, 0.7);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Light theme */
+        [data-theme="light"] {
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.7);
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-purple), var(--color-blue), var(--color-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Glass Morphism */
+        .glass {
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+        }
+
+        .glass-strong {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.05));
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 1.25rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; box-shadow: 0 0 20px currentColor; }
+            50% { opacity: 0.6; box-shadow: 0 0 8px currentColor; }
+        }
+
+        @keyframes orbit-outer {
+            from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg); }
+            to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); }
+        }
+
+        @keyframes orbit-inner {
+            from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+            to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+        }
+
+        /* GPU Acceleration */
+        .gpu-accelerated {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* Buttons & Links */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-purple), var(--color-blue));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all var(--transition-normal) ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Responsive Typography using clamp() */
+        .text-responsive-h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+        }
+        
+        .text-responsive-h2 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+        }
+        
+        .text-responsive-h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        /* Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Custom Cursor (Desktop only) */
+        .custom-cursor {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--color-purple);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+
+        .custom-cursor.hovering {
+            width: 60px;
+            height: 60px;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .custom-cursor.clicking {
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--color-purple);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Hero Profile */
+        .hero-profile-container {
+            position: relative;
+            width: min(520px, 90vw);
+            height: min(720px, 78vh);
+            margin: 0 auto;
+        }
+
+        .hero-profile-card {
+            width: 100%;
+            height: 100%;
+            border-radius: 2rem;
+            position: relative;
+            overflow: visible;
+            background: linear-gradient(to top, rgba(139, 92, 246, 0.1), transparent);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .orbit-ring {
+            position: absolute;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 3px;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .orbit-ring-outer {
+            width: 160%;
+            height: 75%;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+            border-color: var(--color-cyan);
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation: orbit-outer 8s linear infinite;
+            filter: drop-shadow(0 0 12px var(--color-cyan));
+        }
+
+        .orbit-ring-inner {
+            width: 130%;
+            height: 60%;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+            border-color: var(--color-purple);
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            animation: orbit-inner 12s linear infinite;
+            filter: drop-shadow(0 0 12px var(--color-purple));
+        }
+
+        .profile-badge {
+            position: absolute;
+            padding: 0.75rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform var(--transition-fast), box-shadow 0.3s ease;
+            white-space: nowrap;
+            z-index: 10;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            transform-style: preserve-3d;
+        }
+
+        .profile-badge:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .badge-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Skills Bar */
+        .skill-bar {
+            width: 100%;
+            height: 0.5rem;
+            background: var(--bg-secondary);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-purple), var(--color-blue));
+            border-radius: 9999px;
+            transition: width 1s ease-out;
+            width: 0;
+        }
+
+        /* Timeline */
+        .timeline-line {
+            background: linear-gradient(to bottom, var(--color-purple), var(--color-blue));
+            opacity: 0.3;
+        }
+
+        .timeline-dot {
+            background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
+            box-shadow: 0 0 15px var(--color-purple);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Focus Styles */
+        *:focus-visible {
+            outline: 2px solid var(--color-purple);
+            outline-offset: 2px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform var(--transition-normal) ease, opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 40;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Utilities */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 767px) {
+            .hero-profile-container {
+                width: min(380px, 92vw);
+                height: min(560px, 65vh);
+            }
+
+            .profile-badge {
+                padding: 0.5rem;
+                gap: 0.5rem;
+                transform: scale(0.85);
+            }
+
+            .badge-icon {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            .orbit-ring-outer {
+                width: 170%;
+                height: 70%;
+            }
+            
+            .orbit-ring-inner {
+                width: 135%;
+                height: 55%;
+            }
+
+            /* Hide background effects on mobile for clean UI */
+            #background-effects,
+            .custom-cursor,
+            .cursor-dot {
+                display: none !important;
+            }
+        }
+
+        /* ===== LIGHT MODE TEXT & UI OVERRIDES ===== */
+        [data-theme="light"] {
+            --glass-bg-override: rgba(0, 0, 0, 0.04);
+            --glass-border-override: rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .text-gray-100,
+        [data-theme="light"] .text-gray-200,
+        [data-theme="light"] .text-white {
+            color: #111827 !important;
+        }
+
+        [data-theme="light"] .text-gray-300 {
+            color: #374151 !important;
+        }
+
+        [data-theme="light"] .text-gray-400 {
+            color: #4b5563 !important;
+        }
+
+        [data-theme="light"] .text-gray-500 {
+            color: #6b7280 !important;
+        }
+
+        [data-theme="light"] .text-purple-300 {
+            color: #7c3aed !important;
+        }
+
+        [data-theme="light"] .text-purple-400 {
+            color: #6d28d9 !important;
+        }
+
+        [data-theme="light"] .text-blue-300,
+        [data-theme="light"] .text-blue-400 {
+            color: #2563eb !important;
+        }
+
+        [data-theme="light"] .text-cyan-400 {
+            color: #0891b2 !important;
+        }
+
+        [data-theme="light"] .text-green-400 {
+            color: #059669 !important;
+        }
+
+        [data-theme="light"] .text-orange-400 {
+            color: #d97706 !important;
+        }
+
+        [data-theme="light"] .text-pink-400 {
+            color: #db2777 !important;
+        }
+
+        [data-theme="light"] .glass {
+            background: rgba(255, 255, 255, 0.75) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+        }
+
+        [data-theme="light"] .glass-strong {
+            background: rgba(255, 255, 255, 0.85) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+        }
+
+        [data-theme="light"] .hero-profile-card {
+            background: linear-gradient(to top, rgba(139, 92, 246, 0.08), transparent);
+            border-color: rgba(139, 92, 246, 0.25);
+        }
+
+        [data-theme="light"] .profile-badge {
+            background: rgba(255, 255, 255, 0.92) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+
+        [data-theme="light"] .profile-badge p.text-white {
+            color: #1f2937 !important;
+        }
+
+        [data-theme="light"] .profile-badge p.text-gray-400 {
+            color: #6b7280 !important;
+        }
+
+        [data-theme="light"] .border-white\/10 {
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        [data-theme="light"] .hover\:bg-white\/10:hover,
+        [data-theme="light"] .hover\:bg-white\/5:hover {
+            background: rgba(0, 0, 0, 0.04) !important;
+        }
+
+        [data-theme="light"] .skill-bar {
+            background: #e5e7eb !important;
+        }
+
+        [data-theme="light"] .timeline-line {
+            opacity: 0.5;
+        }
+
+        [data-theme="light"] .btn-primary {
+            color: white !important;
+        }
+
+        [data-theme="light"] #mobile-menu {
+            background-color: #ffffff !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+        }
+
+        [data-theme="light"] #mobile-menu a.text-gray-300 {
+            color: #374151 !important;
+        }
+
+        [data-theme="light"] #mobile-menu a.text-white {
+            color: #111827 !important;
+        }
+
+        [data-theme="light"] .btn-primary,
+        [data-theme="light"] .bg-gradient-to-r.from-purple-600 {
+            color: white !important;
+        }
+
+        [data-theme="light"] #main-nav {
+            background: rgba(255, 255, 255, 0.85) !important;
+        }
+
+        [data-theme="light"] .bg-blob {
+            opacity: 0.08;
+        }
+
+        [data-theme="light"] .scroll-down-hint {
+            color: #6b7280 !important;
+        }
+
+        /* Light Mode — comprehensive text contrast fix */
+        [data-theme="light"] .gradient-text {
+            background: linear-gradient(135deg, #6d28d9, #2563eb) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        [data-theme="light"] nav a.text-sm,
+        [data-theme="light"] nav a:not(.btn-primary) {
+            color: #374151 !important;
+        }
+
+        [data-theme="light"] nav a.text-purple-400 {
+            color: #6d28d9 !important;
+        }
+
+        [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3,
+        [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 {
+            color: #111827 !important;
+        }
+
+        [data-theme="light"] h1 .gradient-text,
+        [data-theme="light"] h2 .gradient-text,
+        [data-theme="light"] h3 .gradient-text {
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        [data-theme="light"] p, [data-theme="light"] li, [data-theme="light"] span {
+            color: inherit;
+        }
+
+        [data-theme="light"] .text-white:not(.btn-primary *):not(.gradient-text):not([class*="bg-"]) {
+            color: #111827 !important;
+        }
+
+        [data-theme="light"] a.text-white {
+            color: #111827 !important;
+        }
+
+        [data-theme="light"] .glass, [data-theme="light"] .glass-strong {
+            color: #1f2937;
+        }
+
+        [data-theme="light"] .profile-badge {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="light"] .profile-badge:hover {
+            box-shadow: 0 12px 35px rgba(109, 40, 217, 0.15), 0 0 0 1px rgba(109, 40, 217, 0.15);
+        }
+
+        /* Theme Toggle Icons */
+        [data-theme="dark"] .icon-sun { display: none; }
+        [data-theme="dark"] .icon-moon { display: block; }
+        [data-theme="light"] .icon-sun { display: block; }
+        [data-theme="light"] .icon-moon { display: none; }
+
+        /* Background Effects Container - Fixed behind all content */
+        #background-effects {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Background Blobs */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        /* Canvas z-index override - must be behind all content */
+        #particles-canvas {
+            z-index: -1 !important;
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="loading">
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#home" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded-md">
+        Skip to main content
+    </a>
+
+    <!-- Custom Cursor (Desktop Only) -->
+    <div class="custom-cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
+    <!-- Background Effects (Desktop Only) -->
+    <div id="background-effects" aria-hidden="true">
+        <!-- Ambient Blobs -->
+        <div class="bg-blob" style="top: 10%; left: 10%; width: 24rem; height: 24rem; background: var(--color-purple); animation-delay: 0s;"></div>
+        <div class="bg-blob" style="bottom: 10%; right: 10%; width: 20rem; height: 20rem; background: var(--color-blue); animation-delay: -2s;"></div>
+        <div class="bg-blob" style="top: 50%; left: 50%; width: 16rem; height: 16rem; background: var(--color-cyan); animation-delay: -4s;"></div>
+        
+        <!-- Particles Canvas -->
+        <canvas id="particles-canvas" class="fixed inset-0 z-0"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300" id="main-nav">
+        <div class="container flex items-center justify-between py-3 sm:py-4">
+            <!-- Logo/Name -->
+            <div class="text-lg font-bold font-space gradient-text">
+                <a href="#home" class="no-underline">Aslam</a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-4 lg:gap-6">
+                <a href="#home" class="text-sm hover:text-purple-400 transition-colors py-2">Home</a>
+                <a href="#about" class="text-sm hover:text-purple-400 transition-colors py-2">About</a>
+                <a href="#skills" class="text-sm hover:text-purple-400 transition-colors py-2">Skills</a>
+                <a href="#experience" class="text-sm hover:text-purple-400 transition-colors py-2">Experience</a>
+                <a href="#education" class="text-sm hover:text-purple-400 transition-colors py-2">Education</a>
+                <a href="projects.html" class="text-sm font-bold text-purple-400 hover:text-purple-300 transition-colors py-2">Projects</a>
+                
+                <button type="button" id="theme-toggle" class="p-2 rounded-lg glass hover:bg-white/10 transition-colors" aria-label="Toggle theme" title="Toggle light/dark mode">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+                
+                <a href="#contact" class="btn-primary text-sm">Contact</a>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div class="flex md:hidden items-center gap-2">
+                <button id="theme-toggle-mobile" class="p-2 rounded-lg glass hover:bg-white/10 transition-colors" aria-label="Toggle theme">
+                    <i class="fas fa-moon text-sm text-white"></i>
+                </button>
+                <button id="mobile-btn" class="p-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars text-sm text-white" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden border-t border-white/10" style="background-color: var(--bg-secondary, #12121a);">
+            <div class="container flex flex-col py-2">
+                <a href="#home" class="mobile-link py-3 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg px-4">Home</a>
+                <a href="#about" class="mobile-link py-3 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg px-4">About</a>
+                <a href="#skills" class="mobile-link py-3 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg px-4">Skills</a>
+                <a href="#experience" class="mobile-link py-3 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg px-4">Experience</a>
+                <a href="#education" class="mobile-link py-3 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-lg px-4">Education</a>
+                <a href="projects.html" class="mobile-link py-3 text-base text-purple-400 font-semibold hover:bg-white/5 rounded-lg px-4">Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative flex items-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-4 py-10 sm:py-16 md:py-20">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                
+                <!-- Text Content -->
+                <div class="reveal">
+                    <div class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass mb-4 sm:mb-6">
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                        <span class="text-xs sm:text-sm text-gray-400">Available for Freelance Projects</span>
+                    </div>
+                    
+                    <h1 class="text-responsive-h1 font-bold mb-4 sm:mb-6">
+                        Hi, I'm<br>
+                        <span class="gradient-text text-glow">Mohamed Aslam</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-gray-400 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
+                        <span class="text-white font-semibold">Freelance Software Developer</span> specializing in
+                        <span class="gradient-text font-semibold">Web Apps & Custom Hardware Solutions</span>
+                    </p>
+                    
+                    <p class="text-gray-500 mb-6 sm:mb-8 md:mb-10 max-w-lg leading-relaxed text-sm sm:text-base">
+                        Transforming complex technical challenges into elegant solutions.
+                        With 4+ years of experience, I bring expertise in building modern websites,
+                        custom software, and advanced macOS hardware configurations.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10">
+                        <a href="#contact" class="btn-primary group">
+                            Let's Talk
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="projects.html" class="px-6 sm:px-8 py-3 sm:py-4 rounded-full glass hover:bg-white/10 font-semibold transition-all text-purple-300 text-center text-sm sm:text-base">
+                            Watch Project Videos
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 pt-6 sm:pt-8 border-t border-white/10">
+                        <div>
+                            <p class="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text font-space">4+</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1">Years Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text font-space">500+</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1">Devices Repaired</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text font-space">100%</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Photo with Animations -->
+                <div class="flex justify-center reveal">
+                    <div class="relative z-10 gpu-accelerated">
+                        <!-- Glow Background -->
+                        <div class="absolute inset-[-15%] rounded-full bg-gradient-to-tr from-purple-500/20 via-transparent to-blue-500/20 blur-2xl animate-[spin_8s_linear_infinite] z-0 pointer-events-none"></div>
+                        
+                        <!-- Main Profile Card -->
+                        <div class="hero-profile-container">
+                            <div class="hero-profile-card gpu-accelerated">
+                                
+                                <!-- Orbit Rings -->
+                                <div class="orbit-ring orbit-ring-outer gpu-accelerated"></div>
+                                <div class="orbit-ring orbit-ring-inner gpu-accelerated"></div>
+                                
+                                <!-- Profile Image -->
+                                <img src="imgs/profile.png" alt="Mohamed Aslam - IT Professional" 
+                                     class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[150%] max-w-none h-auto object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.5)]"
+                                     loading="lazy"
+                                     onerror="this.src='https://ui-avatars.com/api/?name=MA&size=400&background=8b5cf6&color=fff&bold=true'">
+                                
+                                <!-- Floating Badges -->
+                                <!-- Badge 1: Hardware Expert (Top Left) -->
+                                <div class="profile-badge glass-strong" style="top: -10px; left: -45px;">
+                                    <div class="badge-icon bg-gradient-to-br from-cyan-500 to-blue-500">
+                                        <i class="fas fa-microchip text-white"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white text-sm">Hardware Expert</p>
+                                        <p class="text-[10px] text-gray-400">PC • Mobile • Network</p>
+                                    </div>
+                                </div>
+
+                                <!-- Badge 2: macOS Expert (Top Right) -->
+                                <div class="profile-badge glass-strong" style="top: 20%; right: -50px;">
+                                    <div class="badge-icon bg-gradient-to-br from-gray-600 to-gray-900 border border-gray-500/30">
+                                        <i class="fab fa-apple text-white"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white text-sm">macOS Expert</p>
+                                        <p class="text-[10px] text-gray-400">Intel & AMD</p>
+                                    </div>
+                                </div>
+
+                                <!-- Badge 3: Web Developer (Bottom Right) -->
+                                <div class="profile-badge glass-strong" style="bottom: -10px; right: -45px;">
+                                    <div class="badge-icon bg-gradient-to-br from-purple-500 to-blue-500">
+                                        <i class="fas fa-code text-white"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white text-sm">Web Developer</p>
+                                        <p class="text-[10px] text-gray-400">HTML • CSS • JS</p>
+                                    </div>
+                                </div>
+
+                                <!-- Badge 4: AI Expert (Bottom Left) -->
+                                <div class="profile-badge glass-strong" style="bottom: 20%; left: -50px;">
+                                    <div class="badge-icon bg-gradient-to-br from-blue-500 to-cyan-500">
+                                        <i class="fas fa-brain text-white"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-white text-sm">Generative AI</p>
+                                        <p class="text-[10px] text-gray-400">Expertise</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:block z-50">
+            <a href="#about" class="flex flex-col items-center text-gray-500 hover:text-white transition-colors" aria-label="Scroll down to about section">
+                <span class="text-xs mb-2">Scroll Down</span>
+                <div class="w-6 h-10 rounded-full border-2 border-current flex justify-center pt-2">
+                    <div class="w-1 h-2 bg-current rounded-full animate-bounce"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 sm:py-24 md:py-32 relative">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="glass-strong rounded-3xl p-2 sm:p-3">
+                            <img src="https://res.cloudinary.com/dvrkgxr4p/image/upload/v1771402851/file_00000000416871fa98cf173110675075_sveqst.png" 
+                                 alt="Professional workspace" 
+                                 class="rounded-2xl w-full"
+                                 loading="lazy">
+                        </div>
+                        <!-- Experience Badge -->
+                        <div class="absolute -bottom-8 -right-8 glass-strong rounded-2xl p-4 sm:p-6 hidden md:flex items-center space-x-4">
+                            <div class="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                <span class="text-xl sm:text-2xl font-bold">4+</span>
+                            </div>
+                            <div>
+                                <p class="text-xl sm:text-2xl font-bold text-white">Years</p>
+                                <p class="text-gray-400 text-sm">Professional Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Badge -->
+                    <div class="glass-strong rounded-2xl p-4 mt-4 flex items-center space-x-4 md:hidden">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl font-bold">4+</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-white">Years</p>
+                            <p class="text-gray-400 text-sm">Professional Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <p class="text-purple-400 font-semibold mb-3 sm:mb-4 tracking-wider uppercase text-xs sm:text-sm">About Me</p>
+                    <h2 class="text-responsive-h2 font-bold mb-4 sm:mb-6">
+                        Passionate <span class="gradient-text">IT Professional</span><br>Based in Sri Lanka
+                    </h2>
+                    <div class="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
+                        <p>
+                            I'm a dedicated freelance developer and IT professional with a deep passion for technology.
+                            Currently pursuing my Higher National Diploma in Computing Software Engineering,
+                            I combine hands-on practical experience with strong theoretical knowledge.
+                        </p>
+                        <p>
+                            My expertise spans from full-stack web development and high-level software coding with Python and C#, to advanced hardware configuration. 
+                            I also specialize in configuring and installing <b>macOS (Hackintosh)</b> on any Windows laptop featuring Intel i-series or AMD processors.
+                        </p>
+                        <div class="border-l-4 border-purple-500 pl-4 text-gray-300 font-medium">
+                            Furthermore, I have extensive expertise in Generative AI. I am highly skilled in using modern AI tools to accelerate development, engineer creative prompts, and implement smart generative solutions into everyday workflows.
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 my-6 sm:my-8">
+                        <div class="glass rounded-xl p-3 sm:p-4">
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm">Location</p>
+                            <p class="text-white font-medium text-xs sm:text-sm md:text-base">Colombo, Sri Lanka</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 sm:p-4">
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm">Education</p>
+                            <p class="text-white font-medium text-xs sm:text-sm md:text-base">HND Computing</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 sm:p-4">
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm">Experience</p>
+                            <p class="text-white font-medium text-xs sm:text-sm md:text-base">4+ Years</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 sm:p-4">
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm">Availability</p>
+                            <p class="text-green-400 font-medium text-xs sm:text-sm md:text-base">Freelance</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn-primary mt-4">
+                        Download CV
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 sm:py-24 md:py-32 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 sm:mb-16 md:mb-20 reveal">
+                <p class="text-purple-400 font-semibold mb-3 sm:mb-4 tracking-wider uppercase text-xs sm:text-sm">My Expertise</p>
+                <h2 class="text-responsive-h2 font-bold">
+                    Skills & <span class="gradient-text">Technologies</span>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                <!-- Technical Skills -->
+                <div class="reveal">
+                    <h3 class="text-responsive-h3 font-bold mb-5 sm:mb-8 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-code text-sm"></i>
+                        </span>
+                        Technical Skills
+                    </h3>
+                    <div class="space-y-3 sm:space-y-4 md:space-y-6">
+                        <!-- Skill Item with Progress Bar -->
+                        <div class="glass rounded-xl p-4 border border-purple-500/30">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-white text-sm">Generative AI & Prompt Engineering</span>
+                                <span class="text-purple-400 font-semibold text-sm">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-4 border border-blue-500/30">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-white text-sm">macOS / Hackintosh (Intel/AMD)</span>
+                                <span class="text-blue-400 font-semibold text-sm">98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="98%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-sm">Web Development (HTML, CSS, JS)</span>
+                                <span class="text-purple-400 font-semibold text-sm">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-sm">Hardware Configuration & Repair</span>
+                                <span class="text-purple-400 font-semibold text-sm">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-sm">Microsoft Office Suite</span>
+                                <span class="text-purple-400 font-semibold text-sm">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-sm">Networking & Troubleshooting</span>
+                                <span class="text-purple-400 font-semibold text-sm">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-sm">Python Programming</span>
+                                <span class="text-purple-400 font-semibold text-sm">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-sm">C# & SQL Databases</span>
+                                <span class="text-purple-400 font-semibold text-sm">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="reveal">
+                    <h3 class="text-responsive-h3 font-bold mb-5 sm:mb-8 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-tools text-sm"></i>
+                        </span>
+                        Tools & Technologies
+                    </h3>
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10">
+                        <!-- Tool Icons -->
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fab fa-html5 text-2xl text-orange-500 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">HTML5</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fab fa-css3-alt text-2xl text-blue-500 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">CSS3</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fab fa-js-square text-2xl text-yellow-400 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">JavaScript</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fab fa-windows text-2xl text-blue-400 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">Windows</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fab fa-linux text-2xl text-yellow-400 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">Linux</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fab fa-python text-2xl text-blue-300 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">Python</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fas fa-database text-2xl text-purple-400 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">SQL</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fab fa-android text-2xl text-green-400 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">Android</p>
+                        </div>
+                        <div class="glass rounded-xl p-3 text-center hover:bg-white/5 transition-colors">
+                            <i class="fas fa-robot text-2xl text-cyan-400 mb-1"></i>
+                            <p class="text-[10px] sm:text-xs font-medium">AI Tools</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-responsive-h3 font-bold mb-4 sm:mb-6">Professional Soft Skills</h3>
+                    <div class="flex flex-wrap gap-2 sm:gap-3">
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-handshake text-yellow-500 mr-1"></i>Client Relations
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-clock text-blue-400 mr-1"></i>Time Management
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-search text-green-400 mr-1"></i>Attention to Detail
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-brain text-purple-400 mr-1"></i>Analytical Thinking
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-tasks text-purple-400 mr-1"></i>Multitasking
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-comments text-cyan-400 mr-1"></i>Communication
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-lightbulb text-yellow-400 mr-1"></i>Problem Solving
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-sync text-green-400 mr-1"></i>Adaptability
+                        </span>
+                        <span class="px-3 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors cursor-default">
+                            <i class="fas fa-users text-pink-400 mr-1"></i>Team Player
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 sm:py-24 md:py-32 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 sm:mb-16 md:mb-20 reveal">
+                <p class="text-purple-400 font-semibold mb-3 sm:mb-4 tracking-wider uppercase text-xs sm:text-sm">What I Offer</p>
+                <h2 class="text-responsive-h2 font-bold">
+                    Freelance <span class="gradient-text">Services</span>
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+                <!-- Service 1: Software Dev -->
+                <div class="glass rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/5 transition-colors reveal">
+                    <div class="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center mb-4 sm:mb-6">
+                        <i class="fas fa-code text-lg sm:text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4">Software & Web Development</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4 sm:mb-6 text-xs sm:text-sm md:text-base">
+                        Custom freelance software solutions and modern, responsive websites built with HTML, CSS, JavaScript, Python, and C#.
+                    </p>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-gray-500">
+                        <li class="flex items-center"><i class="fas fa-check text-orange-400 mr-2 text-[10px] sm:text-xs"></i>Custom Web Apps</li>
+                        <li class="flex items-center"><i class="fas fa-check text-orange-400 mr-2 text-[10px] sm:text-xs"></i>Python & C# Programs</li>
+                        <li class="flex items-center"><i class="fas fa-check text-orange-400 mr-2 text-[10px] sm:text-xs"></i>Business Portfolios</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: macOS Installs -->
+                <div class="glass rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/5 transition-colors reveal">
+                    <div class="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-xl bg-gradient-to-br from-gray-600 to-gray-900 flex items-center justify-center mb-4 sm:mb-6 border border-gray-500/30">
+                        <i class="fab fa-apple text-lg sm:text-xl md:text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4">Custom macOS Installs</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4 sm:mb-6 text-xs sm:text-sm md:text-base">
+                        Expert Hackintosh configuration. Installing and optimizing macOS on Windows laptops with Intel i-Series or AMD processors.
+                    </p>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-gray-500">
+                        <li class="flex items-center"><i class="fas fa-check text-gray-400 mr-2 text-[10px] sm:text-xs"></i>Intel & AMD Support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-gray-400 mr-2 text-[10px] sm:text-xs"></i>Driver Optimization</li>
+                        <li class="flex items-center"><i class="fas fa-check text-gray-400 mr-2 text-[10px] sm:text-xs"></i>Seamless Apple Experience</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Computer Repair -->
+                <div class="glass rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/5 transition-colors reveal">
+                    <div class="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4 sm:mb-6">
+                        <i class="fas fa-desktop text-lg sm:text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4">Computer Repair</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4 sm:mb-6 text-xs sm:text-sm md:text-base">
+                        Expert hardware configuration, software installation, troubleshooting, and deep system upgrades.
+                    </p>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-gray-500">
+                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2 text-[10px] sm:text-xs"></i>Hardware Diagnostics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2 text-[10px] sm:text-xs"></i>OS Installation</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2 text-[10px] sm:text-xs"></i>Performance Optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Smartphone Repair -->
+                <div class="glass rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/5 transition-colors reveal">
+                    <div class="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-4 sm:mb-6">
+                        <i class="fas fa-mobile-alt text-lg sm:text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4">Smartphone Repair</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4 sm:mb-6 text-xs sm:text-sm md:text-base">
+                        Comprehensive smartphone troubleshooting, unlocking services, software issues, and data recovery.
+                    </p>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-gray-500">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-2 text-[10px] sm:text-xs"></i>Screen & Battery Repair</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-2 text-[10px] sm:text-xs"></i>FRP & iCloud Bypass</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-2 text-[10px] sm:text-xs"></i>Software Flashing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 sm:py-24 md:py-32 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 sm:mb-16 md:mb-20 reveal">
+                <p class="text-purple-400 font-semibold mb-3 sm:mb-4 tracking-wider uppercase text-xs sm:text-sm">My Journey</p>
+                <h2 class="text-responsive-h2 font-bold">
+                    Work <span class="gradient-text">Experience</span>
+                </h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
+                <!-- Experience Items -->
+                <div class="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 reveal">
+                    <div class="flex flex-col sm:flex-row sm:items-start justify-between mb-3 sm:mb-4 md:mb-6 gap-3">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-shopping-cart text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base md:text-xl font-bold">Fulfillment Executive</h3>
+                                <p class="text-green-400 font-medium text-xs sm:text-sm md:text-base">Zoko Asia</p>
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Colombo, Sri Lanka
+                                </p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-green-500/20 text-green-300 text-[10px] sm:text-xs md:text-sm font-semibold flex items-center w-fit whitespace-nowrap">
+                            <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-400 rounded-full mr-1.5 sm:mr-2 animate-pulse"></span>
+                            Jan 2025 - Present
+                        </span>
+                    </div>
+                    <ul class="space-y-1.5 sm:space-y-2 md:space-y-3 text-gray-400 text-xs sm:text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-green-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Managing order fulfillment operations and ensuring timely delivery
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-green-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Coordinating logistics and optimizing fulfillment workflows
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-green-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Overseeing inventory management and quality assurance processes
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 reveal">
+                    <div class="flex flex-col sm:flex-row sm:items-start justify-between mb-3 sm:mb-4 md:mb-6 gap-3">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-microchip text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base md:text-xl font-bold">Hardware Technician</h3>
+                                <p class="text-blue-400 font-medium text-xs sm:text-sm md:text-base">Sonad Computers</p>
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Colombo, Sri Lanka
+                                </p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-blue-500/20 text-blue-300 text-[10px] sm:text-xs md:text-sm font-semibold w-fit">
+                            2 Months
+                        </span>
+                    </div>
+                    <ul class="space-y-1.5 sm:space-y-2 md:space-y-3 text-gray-400 text-xs sm:text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-blue-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Diagnosed and repaired computer hardware issues
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-blue-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Assembled and configured desktop systems
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-blue-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Performed system upgrades and maintenance
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 reveal">
+                    <div class="flex flex-col sm:flex-row sm:items-start justify-between mb-3 sm:mb-4 md:mb-6 gap-3">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-tooth text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base md:text-xl font-bold">Lab Technician</h3>
+                                <p class="text-cyan-400 font-medium text-xs sm:text-sm md:text-base">Align Dental Care</p>
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Colombo, Sri Lanka
+                                </p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] sm:text-xs md:text-sm font-semibold w-fit">
+                            2 Months
+                        </span>
+                    </div>
+                    <ul class="space-y-1.5 sm:space-y-2 md:space-y-3 text-gray-400 text-xs sm:text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-cyan-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Supported dental laboratory operations and procedures
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-cyan-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Maintained lab equipment and ensured quality standards
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-cyan-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Assisted with technical documentation and record keeping
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item 4 -->
+                <div class="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 reveal">
+                    <div class="flex flex-col sm:flex-row sm:items-start justify-between mb-3 sm:mb-4 md:mb-6 gap-3">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-mobile-alt text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base md:text-xl font-bold">Technician & Cashier</h3>
+                                <p class="text-purple-400 font-medium text-xs sm:text-sm md:text-base">Royal Mobile Services (PVT) Ltd</p>
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Colombo 02
+                                </p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-purple-500/20 text-purple-300 text-[10px] sm:text-xs md:text-sm font-semibold w-fit whitespace-nowrap">
+                            2019 - 2022 (3 Years)
+                        </span>
+                    </div>
+                    <ul class="space-y-1.5 sm:space-y-2 md:space-y-3 text-gray-400 text-xs sm:text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-purple-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Provided expert technical support for computer and smartphone repairs
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-purple-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Managed cash transactions and delivered excellent customer service
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-purple-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Performed hardware diagnostics, software troubleshooting, and device unlocking
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Freelance -->
+                <div class="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 reveal">
+                    <div class="flex flex-col sm:flex-row sm:items-start justify-between mb-3 sm:mb-4 md:mb-6 gap-3">
+                        <div class="flex items-start space-x-3 sm:space-x-4">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-laptop-code text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base md:text-xl font-bold">Freelance Technician & Web Developer</h3>
+                                <p class="text-orange-400 font-medium text-xs sm:text-sm md:text-base">Self-Employed</p>
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1">
+                                    <i class="fas fa-globe mr-1"></i>Colombo, Sri Lanka
+                                </p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-orange-500/20 text-orange-300 text-[10px] sm:text-xs md:text-sm font-semibold flex items-center w-fit">
+                            <span class="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-orange-400 rounded-full mr-1.5 sm:mr-2 animate-pulse"></span>
+                            Ongoing
+                        </span>
+                    </div>
+                    <ul class="space-y-1.5 sm:space-y-2 md:space-y-3 text-gray-400 text-xs sm:text-sm md:text-base">
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-orange-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Upgrade and repair desktops, smartphones, and laptops
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-orange-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Web development using HTML, CSS, JavaScript, and modern frameworks
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-orange-400 mr-1.5 sm:mr-2 md:mr-3 mt-0.5 sm:mt-1 text-[10px] sm:text-xs flex-shrink-0"></i>
+                            Software reinstallation, flashing, FRP/iCloud bypass, password recovery
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 sm:py-24 md:py-32 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 sm:mb-16 md:mb-20 reveal">
+                <p class="text-purple-400 font-semibold mb-3 sm:mb-4 tracking-wider uppercase text-xs sm:text-sm">Academic Background</p>
+                <h2 class="text-responsive-h2 font-bold">
+                    My <span class="gradient-text">Education</span>
+                </h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative">
+                <div class="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 timeline-line transform md:-translate-x-1/2"></div>
+
+                <!-- Education Items -->
+                <div class="relative mb-10 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-4">
+                        <div class="w-3 sm:w-4 h-3 sm:h-4 timeline-dot rounded-full absolute left-[18px] sm:left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
+                    </div>
+                    <div class="ml-12 sm:ml-16 md:ml-0 md:w-5/12 md:mr-auto">
+                        <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+                            <span class="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-purple-500/20 text-purple-300 text-[10px] sm:text-xs font-semibold">Currently Pursuing</span>
+                            <h3 class="text-sm sm:text-base md:text-lg font-bold mt-2 sm:mt-3">Pearson BTEC Level 5 HND</h3>
+                            <p class="text-purple-400 font-medium text-xs sm:text-sm md:text-base">Computing Software Engineering</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2">Esoft Metro Campus, Nugegoda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-10 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-4">
+                        <div class="w-3 sm:w-4 h-3 sm:h-4 timeline-dot rounded-full absolute left-[18px] sm:left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
+                    </div>
+                    <div class="ml-12 sm:ml-16 md:ml-auto md:w-5/12">
+                        <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+                            <span class="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-green-500/20 text-green-300 text-[10px] sm:text-xs font-semibold">Completed</span>
+                            <h3 class="text-sm sm:text-base md:text-lg font-bold mt-2 sm:mt-3">Level 4 Diploma in IT</h3>
+                            <p class="text-blue-400 font-medium text-xs sm:text-sm md:text-base">Information Technology</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2">Esoft Metro Campus, Nugegoda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-10 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-4">
+                        <div class="w-3 sm:w-4 h-3 sm:h-4 timeline-dot rounded-full absolute left-[18px] sm:left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
+                    </div>
+                    <div class="ml-12 sm:ml-16 md:ml-0 md:w-5/12 md:mr-auto">
+                        <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+                            <span class="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-green-500/20 text-green-300 text-[10px] sm:text-xs font-semibold">Completed</span>
+                            <h3 class="text-sm sm:text-base md:text-lg font-bold mt-2 sm:mt-3">Level 3 Certificate in IT</h3>
+                            <p class="text-cyan-400 font-medium text-xs sm:text-sm md:text-base">Information Technology</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2">Esoft Metro Campus, Nugegoda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-10 sm:mb-12 reveal">
+                    <div class="flex items-center md:justify-center mb-4">
+                        <div class="w-3 sm:w-4 h-3 sm:h-4 timeline-dot rounded-full absolute left-[18px] sm:left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
+                    </div>
+                    <div class="ml-12 sm:ml-16 md:ml-auto md:w-5/12">
+                        <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+                            <span class="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-green-500/20 text-green-300 text-[10px] sm:text-xs font-semibold">Completed</span>
+                            <h3 class="text-sm sm:text-base md:text-lg font-bold mt-2 sm:mt-3">Diploma in Hardware & Networking</h3>
+                            <p class="text-pink-400 font-medium text-xs sm:text-sm md:text-base">Computer Hardware</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2">Aquinas College</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative reveal">
+                    <div class="flex items-center md:justify-center mb-4">
+                        <div class="w-3 sm:w-4 h-3 sm:h-4 timeline-dot rounded-full absolute left-[18px] sm:left-6 md:left-1/2 transform md:-translate-x-1/2 z-10"></div>
+                    </div>
+                    <div class="ml-12 sm:ml-16 md:ml-0 md:w-5/12 md:mr-auto">
+                        <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
+                            <span class="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-green-500/20 text-green-300 text-[10px] sm:text-xs font-semibold">Completed</span>
+                            <h3 class="text-sm sm:text-base md:text-lg font-bold mt-2 sm:mt-3">GCE Ordinary Level</h3>
+                            <p class="text-yellow-400 font-medium text-xs sm:text-sm md:text-base">Secondary Education</p>
+                            <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2">Zahira College, Colombo 10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 sm:py-24 md:py-32 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 sm:mb-16 md:mb-20 reveal">
+                <p class="text-purple-400 font-semibold mb-3 sm:mb-4 tracking-wider uppercase text-xs sm:text-sm">Get In Touch</p>
+                <h2 class="text-responsive-h2 font-bold">
+                    Let's Work <span class="gradient-text">Together</span>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto">
+                <div class="reveal">
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">Ready to start your next project?</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6 sm:mb-8 md:mb-10 text-xs sm:text-sm md:text-base">
+                        I'm always open to discussing new projects, custom macOS configurations, or opportunities
+                        to be part of your vision. Let's create something amazing together.
+                    </p>
+
+                    <div class="space-y-3 sm:space-y-4 md:space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl sm:rounded-2xl glass flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                                <i class="fas fa-envelope text-purple-400 text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm">Email</p>
+                                <p class="text-white font-medium text-xs sm:text-sm md:text-base truncate">ashrakangaroo6@gmail.com</p>
+                            </div>
+                        </div>
+                        <a href="tel:+94701397809" class="flex items-center group">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl sm:rounded-2xl glass flex items-center justify-center mr-3 sm:mr-4 group-hover:bg-blue-500/20 transition-colors flex-shrink-0">
+                                <i class="fas fa-phone text-blue-400 text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm">Phone</p>
+                                <p class="text-white font-medium group-hover:text-blue-400 transition-colors text-xs sm:text-sm md:text-base">+94 70 139 7809</p>
+                            </div>
+                        </a>
+                        <div class="flex items-center">
+                            <div class="w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-xl sm:rounded-2xl glass flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-cyan-400 text-sm sm:text-base md:text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm">Location</p>
+                                <p class="text-white font-medium text-xs sm:text-sm md:text-base">Colombo 02, Sri Lanka</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8 md:mt-10">
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700/50 transition-all" aria-label="GitHub">
+                            <i class="fab fa-github text-base sm:text-lg"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100079662132233" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600/20 transition-all" aria-label="Facebook">
+                            <i class="fab fa-facebook-f text-base sm:text-lg"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_aslamshar_?igsh=aXF2Y3J4YTV1ZGpm" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-500/20 transition-all" aria-label="Instagram">
+                            <i class="fab fa-instagram text-base sm:text-lg"></i>
+                        </a>
+                        <a href="https://youtube.com/@unlockeyy6372" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-500/20 transition-all" aria-label="YouTube">
+                            <i class="fab fa-youtube text-base sm:text-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aslam-mulaffer-0a05b5354" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/20 transition-all" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in text-base sm:text-lg"></i>
+                        </a>
+                        <a href="https://x.com/AslamMulaffer" target="_blank" rel="noopener noreferrer" class="w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-500/20 transition-all" aria-label="X Twitter">
+                            <i class="fa-brands fa-x-twitter text-base sm:text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <form action="https://formspree.io/f/mnjbvpro" method="POST" id="contact-form" class="glass-strong rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8">
+                        <div class="grid sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-400 text-[10px] sm:text-xs md:text-sm mb-1.5 sm:mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all text-sm" placeholder="John Doe" required autocomplete="name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-400 text-[10px] sm:text-xs md:text-sm mb-1.5 sm:mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all text-sm" placeholder="john@example.com" required autocomplete="email">
+                            </div>
+                        </div>
+                        <div class="mb-3 sm:mb-4 md:mb-6">
+                            <label for="subject" class="block text-gray-400 text-[10px] sm:text-xs md:text-sm mb-1.5 sm:mb-2">Subject / Service Needed</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all text-sm" placeholder="Web Dev / Hackintosh / Repair" required>
+                        </div>
+                        <div class="mb-3 sm:mb-4 md:mb-6">
+                            <label for="message" class="block text-gray-400 text-[10px] sm:text-xs md:text-sm mb-1.5 sm:mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-dark-700 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all resize-none text-sm" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full justify-center">
+                            Send Message
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 sm:py-6 md:py-8 border-t border-white/10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+                <p class="text-gray-500 text-[10px] sm:text-xs md:text-sm text-center sm:text-left">
+                    © 2025 <span class="gradient-text font-semibold">Mohamed Aslam Mulaffer</span>. All rights reserved.
+                </p>
+                <div class="flex items-center space-x-3 sm:space-x-4 md:space-x-6">
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white text-base sm:text-lg transition-colors" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#home" class="text-gray-500 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors">Home</a>
+                    <a href="#about" class="text-gray-500 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors">About</a>
+                    <a href="#contact" class="text-gray-500 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-top" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 w-10 sm:w-11 md:w-12 h-10 sm:h-11 md:h-12 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-purple-500/25 transition-all z-50 items-center justify-center hidden" aria-label="Back to top">
+        <i class="fas fa-arrow-up text-sm sm:text-base"></i>
+    </button>
+
+    <script>
+        // ===== MODULAR JAVASCRIPT FOR OPTIMIZATION =====
+
+        // Utility: Throttle function
+        function throttle(fn, wait) {
+            let last = 0;
+            return function(...args) {
+                const now = Date.now();
+                if (now - last >= wait) {
+                    last = now;
+                    fn.apply(this, args);
+                }
+            };
+        }
+
+        // Utility: Get current theme
+        function getTheme() {
+            return document.documentElement.getAttribute('data-theme') || 'dark';
+        }
+
+        // Theme Management
+        function initTheme() {
+            const stored = localStorage.getItem('portfolio-theme');
+            let theme = stored;
+            
+            if (!theme) {
+                // Follow user's system preference
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
+        }
+
+        // Listen for system theme changes (auto-switch when no manual override)
+        try {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('portfolio-theme')) {
+                    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                }
+            });
+        } catch(_) {}
+
+        function toggleTheme() {
+            const next = getTheme() === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('portfolio-theme', next);
+        }
+
+        // Mobile Menu Management
+        function initMobileMenu() {
+            const mobileBtn = document.getElementById('mobile-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            if (!mobileBtn || !mobileMenu) return;
+
+            mobileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = mobileMenu.classList.contains('open');
+                
+                mobileMenu.classList.toggle('open', !isOpen);
+                menuIcon.className = isOpen ? 'fas fa-bars text-sm text-white' : 'fas fa-times text-sm text-white';
+                mobileBtn.setAttribute('aria-expanded', !isOpen);
+            });
+
+            // Close on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    menuIcon.className = 'fas fa-bars text-sm text-white';
+                    mobileBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('open');
+                    menuIcon.className = 'fas fa-bars text-sm text-white';
+                    mobileBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // Scroll Handler
+        function initScrollEffects() {
+            const backTop = document.getElementById('back-top');
+            const nav = document.getElementById('main-nav');
+            const reveals = document.querySelectorAll('.reveal');
+
+            const handleScroll = throttle(() => {
+                const y = window.scrollY;
+
+                // Back to top visibility
+                if (backTop) {
+                    backTop.classList.toggle('hidden', y <= 300);
+                    backTop.classList.toggle('flex', y > 300);
+                }
+
+                // Nav shadow
+                if (nav) {
+                    nav.classList.toggle('shadow-2xl', y > 50);
+                }
+
+                // Reveal elements
+                reveals.forEach(reveal => {
+                    if (reveal.getBoundingClientRect().top < window.innerHeight - 60) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }, 16);
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            // Trigger initial reveal check on page load
+            handleScroll();
+
+            // Back to top click
+            if (backTop) {
+                backTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        }
+
+        // Skills Animation
+        function initSkillsAnimation() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.getAttribute('data-width');
+                        entry.target.style.width = width;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillBars.forEach(bar => observer.observe(bar));
+        }
+
+        // Custom Cursor (Desktop Only)
+        function initCustomCursor() {
+            const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+            if (isMobile) return;
+
+            const cursor = document.getElementById('cursor');
+            const cursorDot = document.getElementById('cursor-dot');
+            
+            if (!cursor || !cursorDot) return;
+
+            let cursorX = 0, cursorY = 0;
+            let dotX = 0, dotY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                cursorX = e.clientX;
+                cursorY = e.clientY;
+            });
+
+            function animateCursor() {
+                dotX += (cursorX - dotX) * 0.15;
+                dotY += (cursorY - dotY) * 0.15;
+                
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                cursorDot.style.left = dotX + 'px';
+                cursorDot.style.top = dotY + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Hover effects
+            const hoverElements = document.querySelectorAll('a, button, .glass, input, textarea');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+            });
+
+            document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+            document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+        }
+
+        // Particle System (Desktop Only)
+        function initParticles() {
+            const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+            if (isMobile) {
+                const canvas = document.getElementById('particles-canvas');
+                const bgEffects = document.getElementById('background-effects');
+                if (canvas) canvas.style.display = 'none';
+                if (bgEffects) bgEffects.style.display = 'none';
+                return;
+            }
+
+            const canvas = document.getElementById('particles-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animationId;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', throttle(resizeCanvas, 250));
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                    this.hue = Math.random() * 60 + 240;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                        this.reset();
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            // Create particles
+            for (let i = 0; i < 15; i++) {
+                particles.push(new Particle());
+            }
+
+            let frameCount = 0;
+            function animateParticles() {
+                frameCount++;
+                if (frameCount % 3 === 0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    particles.forEach(p => {
+                        p.update();
+                        p.draw();
+                    });
+                }
+                animationId = requestAnimationFrame(animateParticles);
+            }
+
+            // Pause when tab is hidden
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    cancelAnimationFrame(animationId);
+                } else {
+                    animateParticles();
+                }
+            });
+
+            animateParticles();
+        }
+
+        // Parallax Effect (Desktop Only)
+        function initParallax() {
+            const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+            if (isMobile) return;
+
+            const parallaxElements = document.querySelectorAll('[data-speed]');
+            
+            const handleParallax = throttle(() => {
+                const scrolled = window.scrollY;
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.dataset.speed) || 0.05;
+                    el.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            }, 16);
+
+            window.addEventListener('scroll', handleParallax, { passive: true });
+        }
+
+        // Smooth Scroll for Anchors
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offset = 80;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Contact Form Handler
+        function initContactForm() {
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+
+            form.addEventListener('submit', (e) => {
+                // Client-side validation
+                const name = form.name.value.trim();
+                const email = form.email.value.trim();
+                const message = form.message.value.trim();
+
+                if (!name || !email || !message) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    e.preventDefault();
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                // Formspree will handle submission
+                // Add loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+                }
+            });
+        }
+
+        // Theme Toggle Event Listeners
+        function initThemeToggle() {
+            const desktopToggle = document.getElementById('theme-toggle');
+            const mobileToggle = document.getElementById('theme-toggle-mobile');
+
+            if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
+            if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
+        }
+
+        // Initialize All - runs immediately if DOM ready (script at end of body)
+        let _initRan = false;
+        function runInit() {
+            if (_initRan) return;
+            _initRan = true;
+
+            initThemeToggle();
+            initMobileMenu();
+            initScrollEffects();
+            initSkillsAnimation();
+            initCustomCursor();
+            initParticles();
+            initParallax();
+            initSmoothScroll();
+            initContactForm();
+
+            // Remove loading state
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+                document.body.classList.add('loaded');
+            }, 100);
+
+            // Trigger reveal animations after browser has rendered layout
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+                        el.classList.add('active');
+                    }
+                });
+            }, 250);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', runInit);
+        } else {
+            runInit();
+        }
+
+        // Handle resize
+        window.addEventListener('resize', throttle(() => {
+            // Reinitialize on significant resize
+            if (window.innerWidth >= 768) {
+                initCustomCursor();
+                initParticles();
+            }
+        }, 250));
+    </script>
+</body>
+</html>

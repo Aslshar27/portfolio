@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Project Videos | Mohamed Aslam</title>
+    <meta name="description" content="Watch detailed demonstrations of Mohamed Aslam's freelance web development, Hackintosh installations, and hardware repair projects.">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" as="style">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* ===== OPTIMIZED STYLES ===== */
+        
+        :root {
+            --bg-page: #0a0a0f;
+            --bg-card: #12121a;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --gradient-primary: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
+            --color-purple: #8b5cf6;
+            --color-blue: #3b82f6;
+            --transition-normal: 0.4s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.06);
+        }
+
+        /* Base Styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color var(--transition-normal), color var(--transition-normal);
+        }
+
+        /* Typography */
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+        
+        /* Responsive Typography */
+        .text-responsive-h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
+        .text-responsive-h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-primary);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer-text 8s linear infinite;
+        }
+
+        /* Glass Morphism */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            transition: all var(--transition-normal);
+        }
+
+        /* Container */
+        .container { width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Premium Card */
+        .premium-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.25rem;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        /* Video Card */
+        .video-card {
+            aspect-ratio: 16/9;
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--glass-bg);
+            transform: scale(1.08);
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Animations */
+        @keyframes shimmer-text {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero-text { text-align: center; }
+            .mobile-menu { display: block; }
+            .desktop-nav { display: none; }
+            .premium-card { padding: 1rem; }
+            .video-card { aspect-ratio: 16/9; }
+            
+            /* Prevent zoom on inputs */
+            input, textarea, select, button { font-size: 16px; }
+            
+            /* Bigger touch targets */
+            .btn-primary { min-height: 48px; padding: 0.875rem 1.5rem; }
+            .theme-toggle { width: 40px; height: 40px; }
+        }
+
+        /* Hide custom cursor on mobile */
+        @media (pointer: coarse) {
+            .custom-cursor, .cursor-dot { display: none !important; }
+        }
+
+        /* Loading State */
+        .loading { opacity: 0; transition: opacity 0.3s ease; }
+        .loaded { opacity: 1; }
+
+        /* Focus States */
+        *:focus-visible {
+            outline: 2px solid var(--color-purple);
+            outline-offset: 2px;
+        }
+
+        /* Video Controls Styling */
+        video::-webkit-media-controls-panel {
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+    </style>
+</head>
+<body class="loading">
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded-md">
+        Skip to main content
+    </a>
+
+    <!-- Custom Cursor (Desktop Only) -->
+    <div class="custom-cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass">
+        <div class="container flex justify-between items-center py-3 sm:py-4">
+            <!-- Desktop Navigation -->
+            <div class="desktop-nav hidden md:flex items-center gap-4 lg:gap-6">
+                <a href="index.html" class="nav-link text-gray-300 hover:text-white text-sm lg:text-base font-medium">Back to Profile</a>
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+                <a href="index.html#contact" class="btn-primary text-sm">
+                    Hire Me
+                    <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="flex md:hidden items-center gap-2">
+                <button type="button" id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon icon-moon text-sm"></i>
+                    <i class="fas fa-sun icon-sun text-sm"></i>
+                </button>
+                <a href="index.html" class="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-xl text-sm font-medium hover:bg-white/10 transition-colors">
+                    <i class="fas fa-arrow-left text-xs"></i>
+                    Back
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="pt-32 pb-20 relative">
+        <!-- Hero Section -->
+        <section class="text-center mb-16 reveal active">
+            <div class="container">
+                <div class="inline-flex items-center px-4 py-2 rounded-full glass mb-6">
+                    <i class="fas fa-video text-purple-400 mr-2 animate-pulse"></i>
+                    <span class="text-sm text-gray-300">My Video Portfolio</span>
+                </div>
+                <h1 class="text-responsive-h1 font-bold mb-6">
+                    Project <span class="gradient-text">Showcase</span>
+                </h1>
+                <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Watch detailed demonstrations of my freelance web development builds, software architecture, custom Hackintosh installations, and hardware repairs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="py-10">
+            <div class="container">
+                <div id="project-grid" class="grid md:grid-cols-2 gap-8">
+                    <!-- Projects will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/10">
+        <div class="container text-center text-gray-500 text-sm">
+            © 2025 <span class="gradient-text font-semibold">Mohamed Aslam Mulaffer</span>. Available for Freelance Projects.
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hidden hover:shadow-purple-500/25 transition-all z-50" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // ===== OPTIMIZED JAVASCRIPT =====
+
+        // Initialize theme
+        (function initTheme() {
+            const stored = localStorage.getItem('portfolio-theme');
+            let theme = stored;
+            if (!theme) {
+                const hour = new Date().getHours();
+                theme = (hour >= 6 && hour < 19) ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
+        })();
+
+        // Theme Toggle
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('portfolio-theme', newTheme);
+        }
+
+        // Add theme toggle listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+        });
+
+        // Project Data - Optimized for Performance
+        const myProjects = [
+            {
+                title: "Custom Web Application Build",
+                description: "Showcase of a fully responsive e-commerce web platform I developed from scratch.",
+                videoUrl: "https://your-cloudinary-url-here.com/video1.mp4",
+                tag: "Web Dev",
+                color: "purple"
+            },
+            {
+                title: "Hackintosh: macOS on AMD Processor",
+                description: "Demonstrating a perfectly stable macOS installation on an unsupported AMD processor with fully working drivers.",
+                videoUrl: "https://res.cloudinary.com/dvrkgxr4p/video/upload/v1771267051/YTDown.com_YouTube_Dual-Boot-Official-macOS-Sequoia-_-Windo_Media_A6grUsOaJso_001_1080p_cumpuo.mp4",
+                tag: "Hackintosh",
+                color: "blue"
+            },
+            {
+                title: "Python Software Automation Script",
+                description: "A Python script in action that automates repetitive daily business tasks, saving hours of manual labor.",
+                videoUrl: "https://your-cloudinary-url-here.com/video3.mp4",
+                tag: "Python Dev",
+                color: "green"
+            },
+            {
+                title: "High-End Laptop Motherboard Repair",
+                description: "Complete teardown, hardware diagnostic, and component-level repair of a gaming laptop.",
+                videoUrl: "https://your-cloudinary-url-here.com/video4.mp4",
+                tag: "Hardware",
+                color: "orange"
+            }
+        ];
+
+        // Generate Project Cards
+        function generateProjectCards() {
+            const gridContainer = document.getElementById('project-grid');
+            const colorStyles = {
+                purple: "bg-purple-500/20 text-purple-300",
+                blue: "bg-blue-500/20 text-blue-300",
+                green: "bg-green-500/20 text-green-300",
+                orange: "bg-orange-500/20 text-orange-300",
+                cyan: "bg-cyan-500/20 text-cyan-300",
+                pink: "bg-pink-500/20 text-pink-300"
+            };
+
+            myProjects.forEach((project, index) => {
+                const badgeClass = colorStyles[project.color] || colorStyles.purple;
+                const cardHTML = `
+                    <div class="premium-card p-5 reveal active" style="animation-delay: ${index * 0.1}s;">
+                        <div class="video-card mb-4">
+                            <video controls class="w-full h-full object-cover" preload="metadata">
+                                <source src="${project.videoUrl}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="flex justify-between items-start gap-4">
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">${project.title}</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">${project.description}</p>
+                            </div>
+                            ${project.tag ? `<span class="px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${badgeClass}">${project.tag}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+                gridContainer.innerHTML += cardHTML;
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            generateProjectCards();
+            
+            // Add event listeners
+            const backTop = document.getElementById('back-top');
+            window.addEventListener('scroll', () => {
+                if (backTop) {
+                    backTop.classList.toggle('hidden', window.scrollY <= 300);
+                    backTop.classList.toggle('flex', window.scrollY > 300);
+                }
+            });
+            
+            if (backTop) {
+                backTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Intersection Observer for reveal animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Mobile video optimization
+        document.addEventListener('DOMContentLoaded', () => {
+            const videos = document.querySelectorAll('video');
+            const isMobile = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+            
+            if (isMobile) {
+                videos.forEach(video => {
+                    video.setAttribute('preload', 'metadata');
+                    video.setAttribute('poster', 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 9"><rect fill="%2312121a" width="16" height="9"/><text x="8" y="5" font-family="Arial" font-size="1" fill="%238b5cf6" text-anchor="middle">▶</text></svg>');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
