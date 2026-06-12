@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -411,8 +411,8 @@
         /* Mobile Optimizations */
         @media (max-width: 767px) {
             .hero-profile-container {
-                width: min(380px, 92vw);
-                height: min(560px, 65vh);
+                width: min(460px, 95vw);
+                height: min(640px, 72vh);
             }
 
             .profile-badge {
@@ -1645,29 +1645,15 @@
             return document.documentElement.getAttribute('data-theme') || 'dark';
         }
 
-        // Theme Management
+        // Theme Management — dark is primary, light is secondary (manual toggle only)
         function initTheme() {
             const stored = localStorage.getItem('portfolio-theme');
-            let theme = stored;
-            
-            if (!theme) {
-                // Follow user's system preference
-                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            }
+            const theme = stored || 'dark';
             
             document.documentElement.setAttribute('data-theme', theme);
             document.body.classList.remove('loading');
             document.body.classList.add('loaded');
         }
-
-        // Listen for system theme changes (auto-switch when no manual override)
-        try {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (!localStorage.getItem('portfolio-theme')) {
-                    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-                }
-            });
-        } catch(_) {}
 
         function toggleTheme() {
             const next = getTheme() === 'dark' ? 'light' : 'dark';
